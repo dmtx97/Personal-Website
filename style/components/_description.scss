@@ -1,0 +1,13 @@
+$base-margin: 0 0 5px 0;
+
+.container{
+    padding: 10px;
+}
+
+h3, p{
+    margin: $base-margin;
+}
+
+h3{
+    text-align: center;
+}

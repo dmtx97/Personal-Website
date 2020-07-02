@@ -1,0 +1,30 @@
+.hero-content{
+    color: #E9EAED;
+    
+}
+
+a{
+    color: #E9EAED;
+}
+
+.name{
+    text-align: left;
+    margin-bottom: 0px;
+    font-weight: 900;
+}
+
+.description{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 100;
+    margin-top: 0px;
+}
+
+@media screen and (max-width: 1500px){
+
+    .hero-content{
+        margin-left: 0;
+
+    }
+}
+
