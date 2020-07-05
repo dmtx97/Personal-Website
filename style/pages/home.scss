@@ -1,5 +1,5 @@
 a {
-    color: rgb(108, 89, 23);
+    color: #1F1128;
   
     &:link, &:visited {
       text-decoration: none;
@@ -19,7 +19,7 @@ a {
     margin-bottom: 10px;
     padding: 0px 20px 0px 20px;
     text-align: left;
-    font-weight: bold;
+    font-weight: 300;
   }
   
   .content {
@@ -74,10 +74,15 @@ a {
     color: #333;
     font-size: 16px;
     flex-basis: 100%;
-    font-weight: 600;
+    // font-weight: 600;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;  
     // padding: 10px;
+  }
+
+  .logo, .logo2{
+    font-weight: 300;
+
   }
   
   @media screen and (max-width: 1500px) {
@@ -85,6 +90,16 @@ a {
       flex-direction: column-reverse;
     }
   
+    .content {
+      height: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
     .content {
       height: auto;
       margin-top: 10px;

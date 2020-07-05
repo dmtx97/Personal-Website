@@ -24,55 +24,93 @@ const initialState = {
 	message : "",
   };
 
+const inputState = {
+  inputFn : true,
+  inputLn : true,
+  inputE : true,
+  inputM : true
+}
+
 export default function Contact(props){
     const api = new API();
     const [{firstName, lastName, email, message}, setState] = useState(initialState);
 
+    const [{inputFn, inputLn, inputE, inputM}, setInputState] = useState(inputState)
     const onChange = e => {
         const { name, value } = e.target;
         setState(prevState => ({ ...prevState, [name]: value }));
     };
 
-    const sendEmail = ()=>{
+    const inputValidation = ()=>{
 
-      let data = JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
+      let data = {
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+        email: email.trim(),
         message: message
-      })
+      }
 
-      api.sendEmail(data);
-      setState(initialState);
+      if(data.firstName === ''){
+        console.log("First Name Empty");
+        setInputState(prevState=>({...prevState, inputFn : !inputFn}));
+      }
+
+      if(data.lastName === ''){
+        console.log("Last Name Emtpy");
+        setInputState(prevState=>({...prevState, inputLn : !inputLn}));
+      }
+
+      if (data.email === ''){
+        console.log("Email Empty");
+        setInputState(prevState=>({...prevState, inputE : !inputE}));
+      }
+
+      if(data.message === ''){
+        console.log("Message Empty");
+        setInputState(prevState=>({...prevState, inputM : !inputM}));
+      }
+
+      var notEmpty = true; 
+      if(Object.values(data).includes('')){
+        notEmpty = false;
+      }
+      
+      if(notEmpty){
+        api.sendEmail(data);
+        setState(initialState);
+        setInputState(inputState);
+      }else{
+        alert("Empty values");
+      }
     }
 
     return(
       <div>
         <Typography>
-          <Box fontWeight="fontWeightBold">
+          <Box fontWeight="300" paddingBottom="10px">
             Contact Me
           </Box>
         </Typography>
         <form noValidate autoComplete="off">
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                id="firstName"
-                name="firstName"
-                label="First Name"
-                value={firstName}
-                variant="filled"
-
-                InputLabelProps ={{
-                  style: {fontWeight:600, color: "grey"}
-                }}
-                onChange={onChange}
-              />
+                <TextField
+                  fullWidth
+                  id="firstName"
+                  name="firstName"
+                  label="First Name"
+                  value={firstName}
+                  variant="filled"
+                  inputProps={{style: {fontWeight: 300}}}
+                  InputLabelProps ={{
+                    style: {fontWeight:300, color: "grey"}
+                  }}
+                  onChange={onChange}
+                />
             </Grid>
 
             <Grid item xs={12} sm={6}>
-              <TextField
+                <TextField
                 fullWidth
                 id="lastName"
                 label="Last Name"
@@ -80,11 +118,11 @@ export default function Contact(props){
                 value={lastName}
                 variant="filled"
                 onChange={onChange}
-                
+                inputProps={{style: {fontWeight: 300}}}
                 InputLabelProps ={{
-                  style: {fontWeight:600, color: "grey"}
+                  style: {fontWeight:300, color: "grey"}
                 }}
-              />
+                />
             </Grid>
           </Grid>
 
@@ -98,9 +136,9 @@ export default function Contact(props){
               value={email}
               variant="filled"
               onChange={onChange}
-              
+              inputProps={{style: {fontWeight: 300}}}
               InputLabelProps ={{
-                style: {fontWeight:600, color: "grey"}
+                style: {fontWeight:300, color: "grey"}
               }}
               />
             </Grid>
@@ -108,27 +146,27 @@ export default function Contact(props){
 
           <Grid container spacing={2}>
             <Grid item xs={12}>
-            <TextField
-            label="Multiline"
-            multiline
-            rows={4}
-            fullWidth
-            id="message"
-            name="message"
-            label="Message"
-            variant="filled"
-            value={message}
-            onChange={onChange}
-            
-            InputLabelProps ={{
-              style: {fontWeight:600, color: "grey"}
-            }}
-          />
-
+              <TextField
+              label="Multiline"
+              multiline
+              rows={4}
+              fullWidth
+              id="message"
+              name="message"
+              label="Message"
+              variant="filled"
+              value={message}
+              onChange={onChange}
+              inputProps={{style: {fontWeight: 300}}}
+              InputLabelProps ={{
+                style: {fontWeight:300, color: "grey"}
+              }}
+            />
             <Grid item xs={12}>
-              <Button fullWidth variant="contained" style={{marginTop: "8px", fontWeight: 600, color: "grey"}} onClick={sendEmail}>Send</Button>
+              <Button fullWidth variant="contained" style={{marginTop: "8px", fontWeight: 500, color: "grey"}} onClick={inputValidation}>Send</Button>
             </Grid>
             </Grid>
+
           </Grid>
         </form>
       </div>

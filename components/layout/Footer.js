@@ -21,7 +21,7 @@ export default function Footer(){
                         <a href = "https://www.linkedin.com/in/daniel-mendez-326267192/" target="_blank"><LinkedInIcon style={{ fontSize: 20 }}/></a>
                     </li>
                     <li className="link-icon">
-                        <a href = "https://mail.google.com/mail/?view=cm&fs=1&to=dmtx97@gmail.com" target="_blank"><MailIcon style={{ fontSize: 20 }}/></a>
+                        <a href = "mailto:dmtx97@gmail.com"><MailIcon style={{ fontSize: 20 }}/></a>
                     </li>
                 </ul>
             </footer>
@@ -40,6 +40,7 @@ export default function Footer(){
 
                 h3{
                     margin: 0;
+                    font-weight: 300;
                 }
 
                 footer{
@@ -75,7 +76,7 @@ export default function Footer(){
                     justify-content: center;
                     list-style-type: none;
                     display: inline;
-                    padding: 20px;
+                    padding: 22px;
                 }
 
                 .link-icon a{

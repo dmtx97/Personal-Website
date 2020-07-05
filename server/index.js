@@ -13,7 +13,7 @@ app
         const showRoutes = require("./routes/index.js");
 
         server.use(bodyParser.json());
-        server.use(bodyParser.urlencoded({extended: false}));
+        server.use(bodyParser.urlencoded({extended: true}));
         server.use("/api", showRoutes);
 
         server.get("*", (req, res)=>{

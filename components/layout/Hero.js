@@ -10,7 +10,6 @@ export default function Hero(){
                     <h2 className="description"> Software | UI/UX | Networking | Virtual Reality </h2>                    
         </div>
 
-
             <style jsx>{`
 
                 //cannot import images thorugh css for some reason
@@ -26,7 +25,6 @@ export default function Hero(){
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
-
                 }
 
                 @media screen and (max-width: 1500px){
@@ -36,8 +34,6 @@ export default function Hero(){
                     }
                 }
             `}</style>
-         
         </div>
-
     );
 }
