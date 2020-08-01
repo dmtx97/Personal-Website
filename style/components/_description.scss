@@ -1,0 +1,138 @@
+$base-margin: 16px 0 16px 0;
+
+.container{
+    // padding: 10px 20px 10px 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+}
+
+.about{
+    p{
+        line-height: 1.7em;
+        font-weight: 300;
+        margin-top: 0px;
+        font-size: 16px;
+    }
+
+    h3{
+        margin-bottom: 8px;
+        margin-top: 8px;
+    }
+}
+
+.resume{
+
+    .section{
+        margin-top: 0px;
+        margin-bottom: 8px;
+    }
+
+    h4{
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    
+
+    .school{
+        display: inline-block;
+    }
+
+    .fl{
+        display: block;
+        float: right;
+        font-weight: 500;
+        font-size: 13px;
+        margin-top:3px;
+    }
+
+    .title{
+        font-size: 18px;
+    }
+
+    .subsubsection{
+        display: inline-block;
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+    .date{
+        display: block;
+        float: right;
+        font-weight: 500;
+        font-size: 13px;
+        margin-top:3px;
+        
+    }
+
+    .listdesc{
+        margin-block-start: 0;
+        margin-block-end: 0;
+        overflow: hidden;
+        padding-inline-start: 0;
+
+        li{
+            list-style-type: disc;
+            list-style-position: inside;
+            padding-left: 21px;
+            padding-right: 0;
+            font-size: 15px;
+            text-indent: -20px;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+
+    p{
+        margin-top: 0;
+        font-size: 15px;
+        font-weight: 400;
+    }
+    
+    .techcolumn {
+        float: left;
+        width: 50%;
+        
+    }
+    
+    #languages{
+        padding-right: 20px;
+    }
+
+    #framework{
+        padding-right: 0px;
+    }
+    
+      /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+        
+    @media screen and (max-width: 500px){
+
+        .subsubsection{
+            margin-bottom: 4px;
+        }
+        
+        .date{
+            float: none;
+            margin-bottom: 4px;
+        }
+
+        .techcolumn{
+            float: none;
+            width: 100%;
+        }
+    }
+        
+}
+    
+    
