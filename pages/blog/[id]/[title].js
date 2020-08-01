@@ -33,11 +33,8 @@ export default function Blog({blog}){
                 <style jsx>{`
 
                     .content {
-                        margin-left: 150px;
-                        margin-right: 150px;
-                        margin-top: 90px;
-                        margin-bottom:20px;
-                        max-width: 1500px;
+                        margin: 90px 150px 20px 150px;
+
                     }
 
                     .main {
