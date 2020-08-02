@@ -3,7 +3,7 @@ const withCSS = require('@zeit/next-css');
 const withSass = require('@zeit/next-sass');
 const withImages = require('next-images');
 
-module.exports =  withSass(withImages({
+module.exports =  withSass(withCSS(withImages({
       webpack: function(config) {
         config.module.rules.push({
           test: /\.md$/,
@@ -11,5 +11,5 @@ module.exports =  withSass(withImages({
         })
         return config
       }
-}));
+})));
 

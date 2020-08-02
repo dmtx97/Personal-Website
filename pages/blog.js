@@ -8,11 +8,14 @@ import { useEffect, useState, Fragment } from 'react';
 import BlogEntryForm from "../components/CreateBlog";
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+
 // import { shadesOfPurple } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 const CodeBlock = ({ language, value }) => {
     return <SyntaxHighlighter language={language} showLineNumbers={true}>{value}</SyntaxHighlighter>;
     };
+
+
 
 export default function Blogs(){
     const api = new API();
@@ -27,6 +30,10 @@ export default function Blogs(){
     },[]);
     
     const preview = [];
+    let blogArr = {
+        domains: [
+        ]
+    }
     for(var i in vals){
         
         const blog_title = vals[i].title.toLowerCase();
@@ -41,28 +48,26 @@ export default function Blogs(){
         let uploadDate = new Date((vals[i].date_recorded)).toLocaleDateString();
         let description = vals[i].description;
 
+
+
+        blogArr.domains.push(`/blog/${vals[i].blog_id}/${slugifiedTitle(blog_title)}`);
+
+        // arr.push({"domain" : `/blog/${vals[i].blog_id}/${slugifiedTitle(blog_title)}`})
+
+
+
         preview.push(
             <div key={vals[i].blog_id}>
 
                 <div className="preview">
-                    <h1 style={{marginTop: "16px", marginBottom: "8px"}}>
+                    <h1 style={{marginTop: "16px", marginBottom: "2px"}}>
                         <Link href="/blog/[id]/[title]" as={`/blog/${vals[i].blog_id}/${slugifiedTitle(blog_title)}`}>
                                 <a className="blog-title" >{vals[i].title}</a>
                         </Link>
                     </h1>
 
-                    <p>{uploadDate}</p>
-                    {/* <br/> */}
+                    <p style={{marginTop:"0px", color:"gray"}}>{uploadDate}</p>
                     <p style={{marginBottom:"16px"}}>{description}</p>
-
-                    {/* <div className="bodytest">
-                            <ReactMarkdown
-                            escapeHtml={false}
-                            source={vals[i].body}
-                            renderers={{ "code": CodeBlock}}
-                            />
-                            <div className="fadeout"></div>
-                    </div> */}
 
                 </div>
                 <hr/>
@@ -76,7 +81,6 @@ export default function Blogs(){
                         margin-top: 16px;
                     }
 
-
                     .blog-title{
                         font-size: 35px;
                         color: "#2D2B57";
@@ -87,10 +91,6 @@ export default function Blogs(){
                             font-size: 25px;
                         }
                     }
-
-
-
-
 
                     // .bodytest{
                     //     position: relative;
@@ -114,6 +114,8 @@ export default function Blogs(){
             </div>
         );
     }
+
+    console.log(blogArr);
 
     return(
         <Fragment>
@@ -146,3 +148,4 @@ export default function Blogs(){
     </Fragment>
     );
 }
+
