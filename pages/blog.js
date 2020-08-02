@@ -8,10 +8,10 @@ import { useEffect, useState, Fragment } from 'react';
 import BlogEntryForm from "../components/CreateBlog";
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { shadesOfPurple } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+// import { shadesOfPurple } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 const CodeBlock = ({ language, value }) => {
-    return <SyntaxHighlighter language={language} style={shadesOfPurple} showLineNumbers={true}>{value}</SyntaxHighlighter>;
+    return <SyntaxHighlighter language={language} showLineNumbers={true}>{value}</SyntaxHighlighter>;
     };
 
 export default function Blogs(){
@@ -31,33 +31,38 @@ export default function Blogs(){
         
         const blog_title = vals[i].title.toLowerCase();
         const slugifiedTitle = (blog_title) => {
-            blog_title = blog_title.replace(/[^a-zA-Z ]/g, "")
+            // In case I am using forward slashes in title to signify ongoing blog posts I exclude forward slash then replace with dash
+            blog_title = blog_title.replace(/[^a-zA-Z0-9 /]/g, "")
+            blog_title = blog_title.replace("/", "-")
             blog_title = blog_title.replace(/[^a-zA-Z0-9]/g, "-");
             return blog_title;
         }
         
         let uploadDate = new Date((vals[i].date_recorded)).toLocaleDateString();
+        let description = vals[i].description;
 
         preview.push(
             <div key={vals[i].blog_id}>
 
-                <div>
-                    <h1>
+                <div className="preview">
+                    <h1 style={{marginTop: "16px", marginBottom: "8px"}}>
                         <Link href="/blog/[id]/[title]" as={`/blog/${vals[i].blog_id}/${slugifiedTitle(blog_title)}`}>
-                                <a style={{ fontSize: "40px", color: "#2D2B57"}}>{vals[i].title}</a>
+                                <a className="blog-title" >{vals[i].title}</a>
                         </Link>
                     </h1>
 
                     <p>{uploadDate}</p>
+                    {/* <br/> */}
+                    <p style={{marginBottom:"16px"}}>{description}</p>
 
-                    <div className="bodytest">
+                    {/* <div className="bodytest">
                             <ReactMarkdown
                             escapeHtml={false}
                             source={vals[i].body}
                             renderers={{ "code": CodeBlock}}
                             />
                             <div className="fadeout"></div>
-                    </div>
+                    </div> */}
 
                 </div>
                 <hr/>
@@ -66,23 +71,44 @@ export default function Blogs(){
                         display: none;
                     }
 
-                    .bodytest{
-                        position: relative;
-                        height: 200px;
-                        overflow: hidden;
-                        margin-bottom: 20px;
+                    .preview{
+                        max-height:250px;
+                        margin-top: 16px;
                     }
 
-                    .fadeout {
-                        bottom: 0;
-                        height: 100px;
-                        background: linear-gradient(
-                            rgba(255, 255, 255, 0) 0%,
-                            rgba(255, 255, 255, 1) 100%
-                        );
-                        position: absolute;
-                        width: 100%;
-                    } 
+
+                    .blog-title{
+                        font-size: 35px;
+                        color: "#2D2B57";
+                    }
+
+                    @media screen and (max-width: 600px) {
+                        .blog-title{
+                            font-size: 25px;
+                        }
+                    }
+
+
+
+
+
+                    // .bodytest{
+                    //     position: relative;
+                    //     height: 200px;
+                    //     overflow: hidden;
+                    //     margin-bottom: 20px;
+                    // }
+
+                    // .fadeout {
+                    //     bottom: 0;
+                    //     height: 100px;
+                    //     background: linear-gradient(
+                    //         rgba(255, 255, 255, 0) 0%,
+                    //         rgba(255, 255, 255, 1) 100%
+                    //     );
+                    //     position: absolute;
+                    //     width: 100%;
+                    // } 
 
                 `}</style>
             </div>

@@ -36,9 +36,10 @@ router.post('/contact-form', (req, res)=>{
 
 /* BLOG */ 
 router.post('/post-blog-entry', (req,res)=>{
-    let body = req.body.body;
     let title = req.body.title;
-    db.none('INSERT INTO "Blog"(blog_id, body, title, date_recorded) VALUES (DEFAULT, $1, $2, CURRENT_DATE);', [body, title])
+    let description = req.body.description;
+    let body = req.body.body;
+    db.none('INSERT INTO "Blogs"(title, description, date_recorded, body) VALUES ($1, $2, CURRENT_DATE, $3);', [title, description, body])
     .then(res.sendStatus(200))
     .catch(error=>{
         console.log(error)
@@ -47,7 +48,7 @@ router.post('/post-blog-entry', (req,res)=>{
 
 router.post('/delete-blog-entry', (req, res)=>{
     let blog_id = req.body.blog_id;
-    db.one('DELETE FROM "Blog" WHERE blog_id = $1;'[blog_id])
+    db.one('DELETE FROM "Blogs" WHERE blog_id = $1;'[blog_id])
     .then(res.sendStatus(200))
     .catch(error=>{
         console.log(error);
@@ -57,7 +58,7 @@ router.post('/delete-blog-entry', (req, res)=>{
 
 
 router.get('/get-blogs', (req, res)=>{
-    db.any('SELECT * FROM "Blog";')
+    db.any('SELECT * FROM "Blogs";')
     .then(rows=>{
         // console.log(rows)
         res.send(rows);
@@ -74,7 +75,7 @@ router.get('/blog-test/:blog_id', (req, res)=>{
 router.get('/get-blog/:blog_id', (req, res)=>{
     let blog_id = req.params.blog_id;
 
-    db.one('SELECT * FROM "Blog" WHERE blog_id = $1;', [blog_id])
+    db.one('SELECT * FROM "Blogs" WHERE blog_id = $1;', [blog_id])
     .then(row=>{
         res.send(row);
     })

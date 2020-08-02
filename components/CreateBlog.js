@@ -18,11 +18,12 @@ export default function CreateBlog(){
 
     const initialState ={
         title: "",
+        description: "",
         body: ""
     }
 
     const [open, setOpen] = useState(false);
-    const [{title, body}, setState] = useState(initialState);
+    const [{title, description, body}, setState] = useState(initialState);
     const onChange = e => {
         const { name, value } = e.target;
         setState(prevState => ({ ...prevState, [name]: value }));
@@ -40,7 +41,7 @@ export default function CreateBlog(){
 
       let data = {
         title: title.trim(),
-        // body: converter.makeHtml(body)
+        description: description.trim(),
         body: body
       }
 
@@ -88,6 +89,18 @@ export default function CreateBlog(){
             id="title"
             name="title"
             label="Title"
+            onChange={onChange}
+            variant="filled"
+            fullWidth
+            style={{marginTop: "10px", marginBottom: "0px"}}
+          />
+
+          <CssTextField
+            autoFocus
+            margin="dense"
+            id="description"
+            name="description"
+            label="Description"
             onChange={onChange}
             variant="filled"
             fullWidth

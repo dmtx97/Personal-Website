@@ -19,6 +19,7 @@ export default function Blog({blog}){
                 <IconButton style={{marginTop: "12px", marginBottom: "12px", padding: "0"}} a href="/blog" ><ArrowBackIcon/></IconButton>
                     <div className="blog"> 
                         <h1 className="title">{blog.title}</h1>
+                        <p className="description">{blog.decription}</p>
                         <p className="post-date">Posted on {new Date(blog.date_recorded).toLocaleDateString()}</p>
 
                         <div className="blog-content">
