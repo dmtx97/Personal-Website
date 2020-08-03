@@ -11,7 +11,6 @@ export default function Home(){
     return(
         <Layout>
             <Hero/>
-
             <div className="content">
                 <div className="mainparent">
                     <aside className="sidebarright">

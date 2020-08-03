@@ -102,6 +102,8 @@ export default function CreateBlog(){
             name="description"
             label="Description"
             onChange={onChange}
+            multiline
+            rows={3}
             variant="filled"
             fullWidth
             style={{marginTop: "10px", marginBottom: "0px"}}
@@ -120,7 +122,7 @@ export default function CreateBlog(){
             style={{marginBottom: "0px"}}
           />
         </DialogContent>
-        <DialogActions style={{marginRight: "20px", marginLeft: "20px", paddingLeft: "0px", paddingRight: "0px"}}>
+        <DialogActions style={{marginRight: "20px", marginLeft: "20px", marginBottom: "8px", paddingLeft: "0px", paddingRight: "0px"}}>
         <Button variant="contained" style={{fontWeight: 300, color: "grey", boxShadow: "none"}} onClick={handleClose}>Cancel</Button>
         <Button variant="contained" style={{fontWeight: 300, color: "grey", boxShadow: "none"}} onClick={handleBlogSubmission}>Post</Button>
         </DialogActions>

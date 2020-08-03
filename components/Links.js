@@ -45,6 +45,10 @@ export default function Links(){
             text-align: left;
             font-weight: 300;
         }
+
+        .link-component a{
+            color: #808080;
+        }
     
     `}</style>      
         </div>

@@ -82,12 +82,12 @@ export default function Contact(props){
 
     return(
       <div>
-        <Typography style={{fontWeight: "300", marginBottom:"10px" }} >
+        <h4 style={{fontWeight: "300", fontSize:"1rem", marginTop: "0px", marginBottom:"10px" }} >
           Contact Me
-        </Typography>
+        </h4>
         <form noValidate autoComplete="off">
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6} style={{paddingBottom:"0px"}}>
+            <Grid item xs={12} sm={6} style={{paddingBottom:"0px", paddingRight:"4px"}}>
                 <CssTextField
                   fullWidth
                   id="firstName"
@@ -100,10 +100,9 @@ export default function Contact(props){
                   InputLabelProps ={{style: {fontWeight:300, color: "grey"}}}
                   onChange={onChange}
                 />
-
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} style={{paddingLeft: "4px"}}>
                 <CssTextField
                 fullWidth
                 id="lastName"

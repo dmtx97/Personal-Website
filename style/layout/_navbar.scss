@@ -27,6 +27,17 @@
   z-index: 2;
 }
 
+.initials{
+  color: white;
+  &:link, &:visited {
+      text-decoration: none;
+  }
+  
+  &:hover, &:active {
+  text-decoration: underline;
+  }
+}
+
 @media screen and (max-width: 100px) {
   @keyframes myanimation {
     0% {
@@ -68,6 +79,7 @@
 .links {
   padding: 0;
   margin: 0 24px;
+  display: inline-flex;
 
   #blog{
     margin-bottom: 0px;

@@ -3,6 +3,7 @@ import {useRouter} from 'next/router';
 import {useLayoutEffect, useState, useEffect} from 'react'
 import { route } from 'next/dist/next-server/server/router';
 import "../../style/layout/_navbar.scss";
+import Button from '@material-ui/core/Button';
 
 export default function Navbar(){
     const router = useRouter();
@@ -28,9 +29,9 @@ export default function Navbar(){
     return(
         <div>
             <header className={header}>
-                <div className={logo}><Link href="/"><a>DM</a></Link></div>
+                <div className={logo}><Link href="/"><a className="initials">DM</a></Link></div>
                 <ul className="links">
-                    <li id="blog"><Link href = "/blog"><a>Blog</a></Link></li> 
+                    <li id="blog"><Button><Link href = "/blog"><a style={{textDecoration:"none"}}>Blog</a></Link></Button></li> 
                 </ul>        
             </header>
         </div>

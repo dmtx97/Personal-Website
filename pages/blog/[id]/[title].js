@@ -1,12 +1,9 @@
 import API from '../../../api/express_requests';
 import { useEffect } from 'react';
 import Layout from '../../../components/layout/Layout';
-import IconButton from '@material-ui/core/IconButton';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import Links from '../../../components/Links';
 import Contact from '../../../components/Contact';
 import Archive from '../../../components/Archive';
 import 'github-markdown-css';
@@ -33,35 +30,37 @@ export default function Blog({blog}){
                         </aside>
                         <section className="main">
                             <div style={{margin: "16px 20px 16px 20px"}}> 
-                                
                                 <div >
-                                    <IconButton style={{marginTop: "12px", marginBottom: "12px", padding: "0"}} a href="/blog" ><ArrowBackIcon/></IconButton>
-                                        <div className="blog"> 
-                                            <h1 className="title">{blog.title}</h1>
-                                            <p className="description">{blog.decription}</p>
-                                            <p className="post-date">Posted on {new Date(blog.date_recorded).toLocaleDateString()}</p>
+                                    <div className="blog"> 
+                                        <h1 className="title">{blog.title}</h1>
+                                        <p className="description">{blog.decription}</p>
+                                        <p className="post-date">Posted on {new Date(blog.date_recorded).toLocaleDateString()}</p>
 
-                                            <div className='markdown-body'>
-                                                <ReactMarkdown 
-                                                escapeHtml={false}
-                                                source={blog.body}
-                                                renderers={{ "code": CodeBlock}}
-                                                />
-                                            </div>
+                                        <div className='markdown-body'>
+                                            <ReactMarkdown 
+                                            escapeHtml={false}
+                                            source={blog.body}
+                                            renderers={{ "code": CodeBlock}}
+                                            />
                                         </div>
                                     </div>
-                                </div>                                
-                            </section>
-                        </div>
+                                </div>
+                            </div>                                
+                        </section>
+                    </div>
 
                     <style jsx>{`
-                        // .content {
-                        //     // margin-left: 0px;
-                        //     // margin-right: 0px;
-                        //       margin: 20px 150px 20px 150px;
 
+                        .content{
+                            padding-right: 175px;
+                            padding-left: 175px;
 
-                        // }
+                        }
+
+                        .mainparent{
+                            margin: auto;
+
+                        }
 
                         .main {
                             background: white;
@@ -74,14 +73,18 @@ export default function Blog({blog}){
                         }
 
                         .title{
-                            font-size: 40px;
-                            color: #2D2B57;
-                            text-align: center;
+                            font-size: 35px;
+                            // color: #2D2B57;
+                            // text-align: center;
                             margin-top: 0px;
                             margin-bottom: 0px;
                         }
 
-                        @media screen and (max-width: 1500px){
+                        @media screen and (max-width: 1700px){
+
+                            .content{
+                                padding: 0;
+                            }
                             .content {
                                 margin-top: 10px;
                                 margin-left: 50px;

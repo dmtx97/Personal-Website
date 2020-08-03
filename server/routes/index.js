@@ -62,7 +62,7 @@ router.post('/delete-blog-entry', (req, res)=>{
 
 
 router.get('/get-blogs', (req, res)=>{
-    db.any('SELECT * FROM "Blogs";')
+    db.any('SELECT * FROM "Blogs" ORDER BY date_recorded ASC;;')
     .then(rows=>{
         // let data = JSON.stringify(rows);
         // fs.writeFileSync('student-2.json', data);
@@ -73,14 +73,11 @@ router.get('/get-blogs', (req, res)=>{
     })
 })
 
-router.get('/blog-test/:blog_id', (req, res)=>{
-   res.send(req.params.blog_id);
-})
 
 router.get('/get-blog/:blog_id', (req, res)=>{
     let blog_id = req.params.blog_id;
 
-    db.one('SELECT * FROM "Blogs" WHERE blog_id = $1;', [blog_id])
+    db.one('SELECT * FROM "Blogs" WHERE blog_id = $1 ORDER BY date_recorded ASC;', [blog_id])
     .then(row=>{
         res.send(row);
     })

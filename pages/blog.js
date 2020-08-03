@@ -10,6 +10,7 @@ import { getSlugifiedTitle } from "../utils";
 export default function Blogs({blogPreviews}){
 
     const preview = [];
+
     for(var i in blogPreviews){
         
         const blog_title = blogPreviews[i].title.toLowerCase();
@@ -26,8 +27,8 @@ export default function Blogs({blogPreviews}){
                         </Link>
                     </h1>
 
-                    <p style={{marginTop:"0px", color:"gray"}}>{uploadDate}</p>
-                    <p style={{marginBottom:"16px"}}>{description}</p>
+                    <p style={{marginTop:"0px", color: "gray"}}>{description}</p>
+                    <p style={{marginBottom:"16px" , color:"gray"}}>{uploadDate}</p>
 
                 </div>
                 <hr/>
@@ -42,8 +43,9 @@ export default function Blogs({blogPreviews}){
                     }
 
                     .blog-title{
-                        font-size: 35px;
-                        color: "#2D2B57";
+                        font-size: 30px;
+                        font-weight: 300;
+                        // color: "#2D2B57";
                     }
 
                     @media screen and (max-width: 600px) {
@@ -76,7 +78,7 @@ export default function Blogs({blogPreviews}){
                         </aside>
                         <section className="main">
                             <div style={{margin: "16px 20px 16px 20px"}}> 
-                                
+                                <h1 style={{color: "black", fontSize:"35px", marginTop:"16px"}}>POSTS</h1>
                                 {preview}
                                 
                             </div>

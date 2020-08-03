@@ -19,7 +19,8 @@ a {
   .mainparent {
     display: flex;
     max-width: 1500px;
-    margin: 0 auto;
+    margin-right: 175px;
+    margin-left: 175px;
   }
   
   .sidebarright {
@@ -77,9 +78,10 @@ a {
 
   }
   
-  @media screen and (max-width: 1500px) {
+  @media screen and (max-width: 1700px) {
     .mainparent {
       flex-direction: column;
+      margin: auto;
     }
   
     .content {
