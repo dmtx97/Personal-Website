@@ -27,10 +27,10 @@ export default function Archive(){
                                 {/* <hr/> */}
                                 <style jsx>{`
                                     .archive{
-                                        margin-bottom: 5px;
+                                        margin-bottom: 10px;
                                     }
                                     .archiveTitle {
-                                        color: #808080;
+                                        color: #23132D;
                                     }
                                 `}</style>
                             </div>
@@ -60,7 +60,9 @@ export default function Archive(){
 
             .list{
                 font-weight: 300;
-                font-size: 12px;
+                // font-size: 13px;
+                // white-space: nowrap;
+
                 margin: 0;
             }
             

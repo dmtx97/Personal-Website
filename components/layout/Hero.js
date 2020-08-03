@@ -27,7 +27,7 @@ export default function Hero(){
                     background-size: cover;
                 }
 
-                @media screen and (max-width: 1500px){
+                @media screen and (max-width: 1700px){
 
                     .hero-container{
                         height: 100vh;
