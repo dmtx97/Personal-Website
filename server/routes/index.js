@@ -3,6 +3,10 @@ const router = express.Router();
 const nodemailer = require("nodemailer")
 const config = require('../../config.json')
 const db = require('../db');
+'use strict';
+
+const fs = require('fs');
+
 
 
 /* NODEMAILER */
@@ -60,7 +64,8 @@ router.post('/delete-blog-entry', (req, res)=>{
 router.get('/get-blogs', (req, res)=>{
     db.any('SELECT * FROM "Blogs";')
     .then(rows=>{
-        // console.log(rows)
+        // let data = JSON.stringify(rows);
+        // fs.writeFileSync('student-2.json', data);
         res.send(rows);
     })
     .catch(error=>{

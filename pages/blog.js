@@ -3,66 +3,25 @@ import Links from '../components/Links';
 import Link from 'next/link';
 import Layout from '../components/layout/Layout';
 import "../style/pages/blogs.scss";
-import API from '../api/express_requests';
 import { useEffect, useState, Fragment } from 'react';
 import BlogEntryForm from "../components/CreateBlog";
-import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
-// import { shadesOfPurple } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+export default function Blogs({blogPreviews}){
 
-const CodeBlock = ({ language, value }) => {
-    return <SyntaxHighlighter language={language} showLineNumbers={true}>{value}</SyntaxHighlighter>;
-    };
-
-
-
-export default function Blogs(){
-    const api = new API();
-    const[vals, setVals] = useState({});
-    
-    useEffect(()=>{
-        api.getBlogs()
-        .then(data=>{
-            setVals(data);
-        })
-        .catch(err => console.log(err))
-    },[]);
-    
     const preview = [];
-    let blogArr = {
-        domains: [
-        ]
-    }
-    for(var i in vals){
+    for(var i in blogPreviews){
         
-        const blog_title = vals[i].title.toLowerCase();
-        const slugifiedTitle = (blog_title) => {
-            // In case I am using forward slashes in title to signify ongoing blog posts I exclude forward slash then replace with dash
-            blog_title = blog_title.replace(/[^a-zA-Z0-9 /]/g, "")
-            blog_title = blog_title.replace("/", "-")
-            blog_title = blog_title.replace(/[^a-zA-Z0-9]/g, "-");
-            return blog_title;
-        }
-        
-        let uploadDate = new Date((vals[i].date_recorded)).toLocaleDateString();
-        let description = vals[i].description;
-
-
-
-        blogArr.domains.push(`/blog/${vals[i].blog_id}/${slugifiedTitle(blog_title)}`);
-
-        // arr.push({"domain" : `/blog/${vals[i].blog_id}/${slugifiedTitle(blog_title)}`})
-
-
+        const blog_title = blogPreviews[i].title.toLowerCase();
+        let uploadDate = new Date((blogPreviews[i].date_recorded)).toLocaleDateString();
+        let description = blogPreviews[i].description;
 
         preview.push(
-            <div key={vals[i].blog_id}>
+            <div key={blogPreviews[i].blog_id}>
 
                 <div className="preview">
                     <h1 style={{marginTop: "16px", marginBottom: "2px"}}>
-                        <Link href="/blog/[id]/[title]" as={`/blog/${vals[i].blog_id}/${slugifiedTitle(blog_title)}`}>
-                                <a className="blog-title" >{vals[i].title}</a>
+                        <Link href="/blog/[id]/[title]" as={`/blog/${blogPreviews[i].blog_id}/${getSlugifiedTitle(blog_title)}`}>
+                                <a className="blog-title" >{blogPreviews[i].title}</a>
                         </Link>
                     </h1>
 
@@ -92,30 +51,10 @@ export default function Blogs(){
                         }
                     }
 
-                    // .bodytest{
-                    //     position: relative;
-                    //     height: 200px;
-                    //     overflow: hidden;
-                    //     margin-bottom: 20px;
-                    // }
-
-                    // .fadeout {
-                    //     bottom: 0;
-                    //     height: 100px;
-                    //     background: linear-gradient(
-                    //         rgba(255, 255, 255, 0) 0%,
-                    //         rgba(255, 255, 255, 1) 100%
-                    //     );
-                    //     position: absolute;
-                    //     width: 100%;
-                    // } 
-
                 `}</style>
             </div>
         );
     }
-
-    console.log(blogArr);
 
     return(
         <Fragment>
@@ -149,3 +88,32 @@ export default function Blogs(){
     );
 }
 
+export async function getServerSideProps(context) {
+    const fs = require('fs');
+
+    const res = await fetch('http://localhost:3000/api/get-blogs');
+    const blogPreviews = await res.json()
+    let blogArr = {domains: []}
+
+    for(var i in blogPreviews){
+        const blog_title = blogPreviews[i].title.toLowerCase();
+        blogArr.domains.push(`blog/${blogPreviews[i].blog_id}/${getSlugifiedTitle(blog_title)}`);
+    }
+
+    var json = JSON.stringify(blogArr);
+    fs.writeFile('blog-domains.json', json, 'utf8', (err)=>{
+        if(err) return console.log(err);
+        console.log('file written');
+    });
+
+    return {
+        props: { blogPreviews }
+    };   
+}
+
+function getSlugifiedTitle(blog_title){
+    blog_title = blog_title.replace(/[^a-zA-Z0-9 /]/g, "")
+    blog_title = blog_title.replace("/", "-")
+    blog_title = blog_title.replace(/[^a-zA-Z0-9]/g, "-");
+    return blog_title;
+}
