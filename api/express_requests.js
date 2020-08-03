@@ -26,14 +26,8 @@ export default class API{
 
     getOptions['url'] = 'http://localhost:3000/api/get-blogs';
 
-    let blogArr = {
-      domains: [
-      ]
-    }
-
     try {
       const res = await axios(getOptions);
-      console.log(res.data);
       return res.data;
     }
     catch (error) {

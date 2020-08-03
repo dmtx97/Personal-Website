@@ -8,6 +8,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Links from '../../../components/Links';
 import Contact from '../../../components/Contact';
+import Archive from '../../../components/Archive';
 import 'github-markdown-css';
 
 const CodeBlock = ({ language, value }) => {
@@ -23,7 +24,7 @@ export default function Blog({blog}){
                         <aside className="sidebarright">
                             <div className="column">
                                 <div className="links">
-                                    <Links/>
+                                    <Archive/>
                                 </div>
                                 <div className="contact">
                                     <Contact/>

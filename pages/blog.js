@@ -5,6 +5,7 @@ import Layout from '../components/layout/Layout';
 import "../style/pages/blogs.scss";
 import { useEffect, useState, Fragment } from 'react';
 import BlogEntryForm from "../components/CreateBlog";
+import { getSlugifiedTitle } from "../utils";
 
 export default function Blogs({blogPreviews}){
 
@@ -89,31 +90,11 @@ export default function Blogs({blogPreviews}){
 }
 
 export async function getServerSideProps(context) {
-    const fs = require('fs');
-
+    
     const res = await fetch('http://localhost:3000/api/get-blogs');
     const blogPreviews = await res.json()
-    let blogArr = {domains: []}
-
-    for(var i in blogPreviews){
-        const blog_title = blogPreviews[i].title.toLowerCase();
-        blogArr.domains.push(`blog/${blogPreviews[i].blog_id}/${getSlugifiedTitle(blog_title)}`);
-    }
-
-    var json = JSON.stringify(blogArr);
-    fs.writeFile('blog-domains.json', json, 'utf8', (err)=>{
-        if(err) return console.log(err);
-        console.log('file written');
-    });
-
+    
     return {
         props: { blogPreviews }
     };   
-}
-
-function getSlugifiedTitle(blog_title){
-    blog_title = blog_title.replace(/[^a-zA-Z0-9 /]/g, "")
-    blog_title = blog_title.replace("/", "-")
-    blog_title = blog_title.replace(/[^a-zA-Z0-9]/g, "-");
-    return blog_title;
 }
