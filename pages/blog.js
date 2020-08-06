@@ -6,12 +6,17 @@ import Layout from '../components/layout/Layout';
 import { useEffect, useState, Fragment } from 'react';
 import BlogEntryForm from "../components/CreateBlog";
 import { getSlugifiedTitle } from "../utils";
+import ReactMarkdown from 'react-markdown';
+import 'github-markdown-css';
 // import "../style/pages/blogs.scss";
+
+const CodeBlock = ({ language, value }) => {
+    return <SyntaxHighlighter language={language} showLineNumbers={true} style={ tomorrow }>{value}</SyntaxHighlighter>;
+    };
 
 export default function Blogs({blogPreviews}){
 
     const preview = [];
-
     for(var i in blogPreviews){
         
         const blog_title = blogPreviews[i].title.toLowerCase();
@@ -30,6 +35,14 @@ export default function Blogs({blogPreviews}){
 
                     <p style={{marginTop:"0px", color: "gray"}}>{description}</p>
                     <p style={{marginBottom:"16px" , color:"gray"}}>{uploadDate}</p>
+                    
+                    <div className='markdown-body'>
+                        <ReactMarkdown 
+                        escapeHtml={false}
+                        source={blogPreviews[i].body}
+                        renderers={{ "code": CodeBlock}}
+                        />
+                    </div>
 
                 </div>
                 <hr/>
@@ -39,7 +52,7 @@ export default function Blogs({blogPreviews}){
                     }
 
                     .preview{
-                        max-height:250px;
+                        // max-height:250px;
                         margin-top: 16px;
                     }
 

@@ -31,29 +31,23 @@ export default function Blog({blog}){
                         </aside>
                         <section className="main">
                             <div style={{margin: "16px 20px 16px 20px"}}> 
-                                <div >
-                                    <div className="blog"> 
-                                        <h1 className="title">{blog.title}</h1>
-                                        <p className="description">{blog.decription}</p>
-                                        <p className="post-date">Posted on {new Date(blog.date_recorded).toLocaleDateString()}</p>
+                                <div className="blog"> 
+                                    <h1 className="title">{blog.title}</h1>
+                                    <p className="description">{blog.decription}</p>
+                                    <p className="post-date">Posted on {new Date(blog.date_recorded).toLocaleDateString()}</p>
 
-                                        <div className='markdown-body'>
-                                            <ReactMarkdown 
-                                            escapeHtml={false}
-                                            source={blog.body}
-                                            renderers={{ "code": CodeBlock}}
-                                            />
-                                        </div>
+                                    <div className='markdown-body'>
+                                        <ReactMarkdown 
+                                        escapeHtml={false}
+                                        source={blog.body}
+                                        renderers={{ "code": CodeBlock}}
+                                        />
                                     </div>
                                 </div>
                             </div>                                
                         </section>
                     </div>
-
                     <style jsx>{`
-
-
-
                         // .main {
                         //     background: white;
                         //     box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.1);
@@ -64,13 +58,13 @@ export default function Blog({blog}){
                         //     -moz-osx-font-smoothing: grayscale;  
                         // }
 
-                        // .title{
-                        //     font-size: 35px;
-                        //     // color: #2D2B57;
-                        //     // text-align: center;
-                        //     margin-top: 0px;
-                        //     margin-bottom: 0px;
-                        // }
+                        .title{
+                            font-size: 35px;
+                            // color: #2D2B57;
+                            // text-align: center;
+                            margin-top: 0px;
+                            margin-bottom: 0px;
+                        }
 
                         // @media screen and (max-width: 1700px){
 

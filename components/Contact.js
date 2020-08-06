@@ -6,30 +6,37 @@ import Grid from '@material-ui/core/Grid';
 import { CssTextField } from '../style/MaterialStyleVariant';
 import API from '../api/express_requests.js';
 
-const initialState = {
-	firstName : "",
-	lastName : "",
-	email : "",
-	message : "",
-  };
-
-const inputState = {
-  inputFn : true,
-  inputLn : true,
-  inputE : true,
-  inputM : true
-}
-
-export default function Contact(props){
+export default function Contact(){
+    const initialState = {
+      firstName : "",
+      lastName : "",
+      email : "",
+      message : "",
+    };
 
     const api = new API();
     const [{firstName, lastName, email, message}, setState] = useState(initialState);
-
-    const [{inputFn, inputLn, inputE, inputM}, setInputState] = useState(inputState)
     const onChange = e => {
         const { name, value } = e.target;
         setState(prevState => ({ ...prevState, [name]: value }));
+        isFormValid();
     };
+
+    const isFormValid = () =>{
+
+      let data = {
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+        email: email.trim(),
+        message: message
+      }
+
+      if(Object.values(data).includes('')){
+        return true;
+      }
+
+      return false;
+    }
 
     const inputValidation = ()=>{
 
@@ -40,49 +47,15 @@ export default function Contact(props){
         message: message
       }
 
-      let notif = "Empty:\n"
+      api.sendEmail(data);
+      setState(initialState);
 
-      if(data.firstName === ''){
-        console.log("First Name Empty");
-        // setInputState(prevState=>({...prevState, inputFn : !inputFn}));
-        notif += "First Name\n";
-      }
-
-      if(data.lastName === ''){
-        console.log("Last Name Emtpy");
-        // setInputState(prevState=>({...prevState, inputLn : !inputLn}));
-        notif += "Last Name\n";
-      }
-
-      if (data.email === ''){
-        console.log("Email Empty");
-        // setInputState(prevState=>({...prevState, inputE : !inputE}));
-        notif += "Email\n";
-      }
-
-      if(data.message === ''){
-        console.log("Message Empty");
-        // setInputState(prevState=>({...prevState, inputM : !inputM}));
-        notif += "Message\n";
-      }
-
-      var notEmpty = true; 
-      if(Object.values(data).includes('')){
-        notEmpty = false;
-      }
-      
-      if(notEmpty){
-        api.sendEmail(data);
-        setState(initialState);
-        // setInputState(inputState);
-      }else{
-        alert(notif);
-      }
+      console.log(data);
     }
 
     return(
       <div>
-        <h4 style={{fontWeight: "300", fontSize:"1rem", marginTop: "0px", marginBottom:"10px" }} >
+        <h4 style={{fontWeight: "500", fontSize:"1rem", marginTop: "0px", marginBottom:"10px" }} >
           Contact Me
         </h4>
         <form noValidate autoComplete="off">
@@ -156,7 +129,7 @@ export default function Contact(props){
               }}
             />
             <Grid item xs={12}>
-              <Button fullWidth variant="contained" style={{marginTop: "8px", fontWeight: 300, color: "grey", boxShadow: "none"}} onClick={inputValidation}>Send</Button>
+                <Button disabled={isFormValid()} fullWidth variant="contained" style={{marginTop: "8px", fontWeight: 300, color: "grey", boxShadow: "none"}} onClick={inputValidation}>Send</Button>
             </Grid>
             </Grid>
 

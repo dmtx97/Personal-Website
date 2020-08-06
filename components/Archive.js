@@ -30,6 +30,7 @@ export default function Archive(){
                                         margin-bottom: 10px;
                                     }
                                     .archiveTitle {
+                                        text-decoration: underline;
                                         color: #23132D;
                                     }
                                 `}</style>
@@ -45,7 +46,7 @@ export default function Archive(){
     return(
         <div>
             <div className="archived-container">
-            <h4 style={{fontWeight: "300", fontSize:"1rem", marginTop: "0px", marginBottom:"10px" }} >
+            <h4 style={{fontWeight: "500", fontSize:"1rem", marginTop: "0px", marginBottom:"10px" }} >
                 Featured Blog Posts
             </h4>
                 <h4 className="list">{blogArchive}</h4> 
