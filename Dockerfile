@@ -4,4 +4,6 @@ COPY "package*.json" ./
 RUN npm install
 COPY . .
 EXPOSE 3001
-CMD ["node", "server/index.js"]
+RUN npm run build
+CMD ["npm", "start"]
+# CMD ["node", "server/index.js"]

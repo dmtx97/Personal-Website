@@ -34,7 +34,7 @@ export default function Blog({blog}){
                                 <div className="blog"> 
                                     <h1 className="title">{blog.title}</h1>
                                     <p className="description">{blog.decription}</p>
-                                    <p className="post-date">Posted on {new Date(blog.date_recorded).toLocaleDateString()}</p>
+                                    <p className="post-date">Posted on {new Date(blog.date_recorded).toLocaleDateString('en-US', {timeZone: 'UTC'})}</p>
 
                                     <div className='markdown-body'>
                                         <ReactMarkdown 

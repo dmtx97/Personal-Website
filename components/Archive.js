@@ -6,7 +6,7 @@ import { getSlugifiedTitle } from '../utils';
 export default function Archive(){
     const api = new API();
     // const [blogArchive, setBlogArchive] = useState({domains:[]})
-    const [blogArchive, setBlogArchive] = useState([]);
+    const [blogArchive, setBlogArchive] = useState([<p>No featured posts. Please check later!</p>]);
 
 
     useEffect(()=>{
@@ -15,11 +15,13 @@ export default function Archive(){
         api.getBlogs()
         .then((rows)=>{
             let objArr = []
+
             for(var i in rows){
+
                 const blog_title = rows[i].title;
                 const domain = `/blog/${rows[i].blog_id}/${getSlugifiedTitle(blog_title.toLowerCase())}`
 
-                if(currentPath != domain){
+                if(currentPath != domain && rows.length > 1){
                     objArr.push(
                         <div>
                             <div className="archive">
@@ -38,8 +40,11 @@ export default function Archive(){
                         </div>
                     )
                 }
-            }            
-        setBlogArchive(objArr);
+            }
+            // quick fix
+            if(rows.length > 1){
+                setBlogArchive(objArr);
+            }
         })
     }, []);
 

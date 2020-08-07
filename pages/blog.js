@@ -20,7 +20,7 @@ export default function Blogs({blogPreviews}){
     for(var i in blogPreviews){
         
         const blog_title = blogPreviews[i].title.toLowerCase();
-        let uploadDate = new Date((blogPreviews[i].date_recorded)).toLocaleDateString();
+        let uploadDate = new Date((blogPreviews[i].date_recorded)).toLocaleDateString('en-US', {timeZone: 'UTC'});
         let description = blogPreviews[i].description;
 
         preview.push(
@@ -58,7 +58,7 @@ export default function Blogs({blogPreviews}){
 
                     .blog-title{
                         font-size: 30px;
-                        font-weight: 300;
+                        font-weight: 500;
                         // color: "#2D2B57";
                     }
 

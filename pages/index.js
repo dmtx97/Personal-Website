@@ -4,9 +4,13 @@ import Links from '../components/Links';
 import Description from '../components/Description';
 import Contact from '../components/Contact';
 import "../style/pages/home.scss";
-import Fab from "../components/CreateBlog";
+import { useEffect, Component } from 'react';
 
 export default function Home(){
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     return(
         <Layout>

@@ -76,7 +76,7 @@ export default function Footer(){
                     justify-content: center;
                     list-style-type: none;
                     display: inline;
-                    padding: 22px;
+                    padding: 18px;
                 }
 
                 .link-icon a{

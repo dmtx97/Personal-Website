@@ -29,6 +29,7 @@
 
 .initials{
   color: white;
+  font-weight: 400;
   &:link, &:visited {
       text-decoration: none;
   }
@@ -80,6 +81,7 @@
   padding: 0;
   margin: 0 24px;
   display: inline-flex;
+  list-style: none;
 
   #blog{
     margin-bottom: 0px;

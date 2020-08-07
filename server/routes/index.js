@@ -43,7 +43,7 @@ router.post('/post-blog-entry', (req,res)=>{
     let title = req.body.title;
     let description = req.body.description;
     let body = req.body.body;
-    db.none('INSERT INTO "Blogs"(title, description, date_recorded, body) VALUES ($1, $2, CURRENT_DATE, $3);', [title, description, body])
+    db.none('INSERT INTO blogs (title, description, date_recorded, body) VALUES ($1, $2, CURRENT_DATE, $3);', [title, description, body])
     .then(res.sendStatus(200))
     .catch(error=>{
         console.log(error)
@@ -52,7 +52,7 @@ router.post('/post-blog-entry', (req,res)=>{
 
 router.post('/delete-blog-entry', (req, res)=>{
     let blog_id = req.body.blog_id;
-    db.one('DELETE FROM "Blogs" WHERE blog_id = $1;'[blog_id])
+    db.one('DELETE FROM blogs WHERE blog_id = $1;'[blog_id])
     .then(res.sendStatus(200))
     .catch(error=>{
         console.log(error);
@@ -62,7 +62,7 @@ router.post('/delete-blog-entry', (req, res)=>{
 
 
 router.get('/get-blogs', (req, res)=>{
-    db.any('SELECT * FROM "Blogs" ORDER BY date_recorded ASC;;')
+    db.any('SELECT * FROM blogs ORDER BY date_recorded ASC;')
     .then(rows=>{
         // let data = JSON.stringify(rows);
         // fs.writeFileSync('student-2.json', data);
@@ -77,7 +77,7 @@ router.get('/get-blogs', (req, res)=>{
 router.get('/get-blog/:blog_id', (req, res)=>{
     let blog_id = req.params.blog_id;
 
-    db.one('SELECT * FROM "Blogs" WHERE blog_id = $1 ORDER BY date_recorded ASC;', [blog_id])
+    db.one('SELECT * FROM blogs WHERE blog_id = $1 ORDER BY date_recorded ASC;', [blog_id])
     .then(row=>{
         res.send(row);
     })

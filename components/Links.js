@@ -11,25 +11,25 @@ export default function Links(){
             <ul>
 
                 <li style={{listStyleType: "none", marginBottom: "10px", textAlign:"left"}}>
-                <LocationOnIcon style={{verticalAlign:"middle", paddingRight: "10px", fontSize:'20px', transform: "translatey(-2px)", color: "#808080"}}/>Dallas, TX</li>
+                <LocationOnIcon style={{verticalAlign:"middle", paddingRight: "10px", fontSize: "1.7em", transform: "translatey(-1px)", color: "#808080"}}/>Dallas, TX</li>
                 <li style={{listStyleType: "none", marginBottom: "10px", textAlign:"left"}}>
                 <a 
                 href = "https://www.linkedin.com/in/daniel-mendez-326267192/" 
                 target="_blank">
-                <LinkedInIcon style={{verticalAlign:"middle", paddingRight: "10px", fontSize:'20px', transform: "translatey(-2px)", color: "#808080"}}/>daniel-mendez-326267192</a></li>
+                <LinkedInIcon style={{verticalAlign:"middle", paddingRight: "10px", fontSize: "1.7em", transform: "translatey(-1px)", color: "#808080"}}/>daniel-mendez-326267192</a></li>
                 
                 <li style={{listStyleType: "none", marginBottom: "10px", textAlign:"left"}}>
 
                 <a 
                 href = "mailto:dmtx97@gmail.com"
                 >
-                <MailIcon style={{verticalAlign:"middle", paddingRight: "10px", fontSize:'20px', transform: "translatey(-2px)", color: "#808080"}}/>dmtx97@gmail.com</a></li>
+                <MailIcon style={{verticalAlign:"middle", paddingRight: "10px", fontSize: "1.7em", transform: "translatey(-1px)", color: "#808080"}}/>dmtx97@gmail.com</a></li>
 
                 <li style={{listStyleType: "none", marginBottom: "10px", textAlign:"left"}}>
                 <a 
                 href = "https://github.com/dmtx97" 
                 target="_blank">
-                <GitHubIcon style={{verticalAlign:"middle", paddingRight: "10px", fontSize:'20px', transform: "translatey(-2px)", color: "#808080"}}/>dmtx97</a></li>
+                <GitHubIcon style={{verticalAlign:"middle", paddingRight: "10px", fontSize: "1.7em", transform: "translatey(-1px)", color: "#808080"}}/>dmtx97</a></li>
             </ul>
 
     <style jsx>{`
@@ -47,7 +47,7 @@ export default function Links(){
         }
 
         .link-component a{
-            color: #808080;
+            color: #1F1128;
         }
     
     `}</style>      
