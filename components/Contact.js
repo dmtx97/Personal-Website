@@ -4,7 +4,7 @@ import {useState} from 'react'
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { CssTextField } from '../style/MaterialStyleVariant';
-import API from '../api/express_requests.js';
+import API from '../api/';
 
 export default function Contact(){
     const initialState = {

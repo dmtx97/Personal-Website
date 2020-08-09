@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { useState, useEffect } from 'react';
-import API from "../api/express_requests";
+import API from "../api/";
 
 export default function CreateBlog(){
 

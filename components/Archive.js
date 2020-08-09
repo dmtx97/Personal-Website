@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from 'next/link';
-import API from '../api/express_requests';
+import API from '../api/';
 import { getSlugifiedTitle } from '../utils';
 
 export default function Archive(){

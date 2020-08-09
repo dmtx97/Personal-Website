@@ -3,10 +3,9 @@ const router = express.Router();
 const nodemailer = require("nodemailer")
 const config = require('../../config.json')
 const db = require('../db');
-'use strict';
-
 const fs = require('fs');
-
+const bcrypt = require('bcrypt')
+const test = require('../../test.json')
 
 
 /* NODEMAILER */
@@ -15,8 +14,8 @@ router.post('/contact-form', (req, res)=>{
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: config.user,
-            pass: config.pass 
+            user: config.nodemailerUser,
+            pass: config.nodemailerPassword 
         }
     })
 
@@ -59,8 +58,6 @@ router.post('/delete-blog-entry', (req, res)=>{
     })
 })
 
-
-
 router.get('/get-blogs', (req, res)=>{
     db.any('SELECT * FROM blogs ORDER BY date_recorded ASC;')
     .then(rows=>{
@@ -73,7 +70,6 @@ router.get('/get-blogs', (req, res)=>{
     })
 })
 
-
 router.get('/get-blog/:blog_id', (req, res)=>{
     let blog_id = req.params.blog_id;
 
@@ -84,6 +80,18 @@ router.get('/get-blog/:blog_id', (req, res)=>{
     .catch(error=>{
         res.send(error);
     })
+})
+
+router.post('/verifyuser', (req, res)=>{
+    // get hashed password from database
+    // right now testing through a generated hashed password in a json file
+    bcrypt.compare(req.body.password, test.hashedPw, function(err, result) {
+        if (result == true){
+            res.send("passwords match!")
+        }
+        else
+            res.send('incorrect password')
+    });
 })
 
 module.exports = router;

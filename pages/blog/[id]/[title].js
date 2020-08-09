@@ -1,4 +1,4 @@
-import API from '../../../api/express_requests';
+import API from '../../../api/';
 import { useEffect } from 'react';
 import Layout from '../../../components/layout/Layout';
 import ReactMarkdown from 'react-markdown';
@@ -6,7 +6,6 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Contact from '../../../components/Contact';
 import Archive from '../../../components/Archive';
-// import "../../../style/pages/blogs.scss";
 import 'github-markdown-css';
 
 const CodeBlock = ({ language, value }) => {
@@ -48,16 +47,6 @@ export default function Blog({blog}){
                         </section>
                     </div>
                     <style jsx>{`
-                        // .main {
-                        //     background: white;
-                        //     box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.1);
-                        //     border-radius: 4px;
-                        //     color: #333;
-                        //     font-size: 16px;
-                        //     -webkit-font-smoothing: antialiased;
-                        //     -moz-osx-font-smoothing: grayscale;  
-                        // }
-
                         .title{
                             font-size: 35px;
                             // color: #2D2B57;
@@ -65,40 +54,6 @@ export default function Blog({blog}){
                             margin-top: 0px;
                             margin-bottom: 0px;
                         }
-
-                        // @media screen and (max-width: 1700px){
-
-                        //     .content{
-                        //         padding: 0;
-                        //     }
-                        //     .content {
-                        //         margin-top: 10px;
-                        //         margin-left: 50px;
-                        //         margin-right: 50px;
-                        //         //fix marginal issue for blog content
-                        //     }
-
-                        //     .blog .title{
-                        //         font-size: 2.2em;
-                        //         text-align: left;
-                        //     }
-                        // }
-
-                        // @media screen and (max-width: 600px){
-                        //     .content {
-                        //         margin-left: 15px;
-                        //         margin-right: 15px;
-                        //     }
-        
-                        //     .post-date{
-                        //         margin: 0;
-                        //     }
-
-                        //     .blog{
-                        //         margin: auto;
-                        //     }
-                        // }
-
                     `}</style>
                 </div>
         </Layout>

@@ -2,13 +2,11 @@ import Contact from '../components/Contact';
 import Links from '../components/Links';
 import Link from 'next/link';
 import Layout from '../components/layout/Layout';
-// import "../style/pages/blogs.scss";
 import { useEffect, useState, Fragment } from 'react';
 import BlogEntryForm from "../components/CreateBlog";
 import { getSlugifiedTitle } from "../utils";
 import ReactMarkdown from 'react-markdown';
 import 'github-markdown-css';
-// import "../style/pages/blogs.scss";
 
 const CodeBlock = ({ language, value }) => {
     return <SyntaxHighlighter language={language} showLineNumbers={true} style={ tomorrow }>{value}</SyntaxHighlighter>;

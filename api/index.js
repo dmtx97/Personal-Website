@@ -22,6 +22,12 @@ export default class API{
     axios(postOptions);
   }
 
+  verifyUser(data){
+    postOptions['url'] = 'api/verifyuser';
+    postOptions['data'] = data;
+    axios(postOptions);
+  }
+
   async getBlogs(){
 
     getOptions['url'] = 'http://localhost:3000/api/get-blogs';
