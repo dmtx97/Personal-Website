@@ -6,16 +6,31 @@ import { useEffect, useState, Fragment } from 'react';
 import BlogEntryForm from "../components/CreateBlog";
 import { getSlugifiedTitle } from "../utils";
 import ReactMarkdown from 'react-markdown';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteBlog from '../components/DeleteBlog';
 import 'github-markdown-css';
 
 const CodeBlock = ({ language, value }) => {
     return <SyntaxHighlighter language={language} showLineNumbers={true} style={ tomorrow }>{value}</SyntaxHighlighter>;
     };
 
+//make this admin page instead... copy for front end view
 export default function Blogs({blogPreviews}){
 
+    const [deleteModalStatus, setDeleteModalStatus] = useState(false);
     const preview = [];
-    for(var i in blogPreviews){
+    const handleEdit = (id) =>{
+        console.log("editing: ", id);
+    }
+
+    const handleDelete = (id) =>{
+        console.log(deleteModalStatus)
+        setDeleteModalStatus(true);
+        console.log("deleting: ", id)
+    }
+
+    for(let i in blogPreviews){
         
         const blog_title = blogPreviews[i].title.toLowerCase();
         let uploadDate = new Date((blogPreviews[i].date_recorded)).toLocaleDateString('en-US', {timeZone: 'UTC'});
@@ -25,11 +40,19 @@ export default function Blogs({blogPreviews}){
             <div key={blogPreviews[i].blog_id}>
 
                 <div className="preview">
-                    <h1 style={{marginTop: "16px", marginBottom: "2px"}}>
-                        <Link href="/blog/[id]/[title]" as={`/blog/${blogPreviews[i].blog_id}/${getSlugifiedTitle(blog_title)}`}>
-                                <a className="blog-title" >{blogPreviews[i].title}</a>
-                        </Link>
-                    </h1>
+
+                    <div className="head">
+                        <h1 style={{marginTop: "16px", marginBottom: "2px"}}>
+                            <Link href="/blog/[id]/[title]" as={`/blog/${blogPreviews[i].blog_id}/${getSlugifiedTitle(blog_title)}`}>
+                                    <a className="blog-title" >{blogPreviews[i].title}</a>
+                            </Link>
+                        </h1>
+
+                        <div className="modifyicons">
+                            <EditIcon onClick={()=>handleEdit(blogPreviews[i].blog_id)} style={{cursor: "pointer", verticalAlign:"middle", marginRight: "4px", transform: "translatey(4px)", color: "#808080"}}/> 
+                            <DeleteIcon onClick={()=>handleDelete(blogPreviews[i].blog_id)} style={{ cursor:"pointer", verticalAlign:"middle", marginLeft: "4px", transform: "translatey(4px)", color: "#808080"}}/> 
+                        </div>
+                    </div>
 
                     <p style={{marginTop:"0px", color: "gray"}}>{description}</p>
                     <p style={{marginBottom:"16px" , color:"gray"}}>{uploadDate}</p>
@@ -60,10 +83,20 @@ export default function Blogs({blogPreviews}){
                         // color: "#2D2B57";
                     }
 
+                    .head h1{
+                        display: inline;
+                    }
+
+                    .modifyicons{
+                        float: right;
+                    }
+
                     @media screen and (max-width: 600px) {
                         .blog-title{
                             font-size: 25px;
                         }
+
+                        
                     }
 
                 `}</style>
@@ -99,6 +132,7 @@ export default function Blogs({blogPreviews}){
                 </div>
         </Layout>
         <BlogEntryForm/>
+        <DeleteBlog deleteModalStatus={deleteModalStatus}/>
     </Fragment>
     );
 }
