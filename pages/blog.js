@@ -9,6 +9,7 @@ import ReactMarkdown from 'react-markdown';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteBlog from '../components/DeleteBlog';
+import UpdateBlog from '../components/UpdateBlog';
 import 'github-markdown-css';
 
 const CodeBlock = ({ language, value }) => {
@@ -18,16 +19,9 @@ const CodeBlock = ({ language, value }) => {
 //make this admin page instead... copy for front end view
 export default function Blogs({blogPreviews}){
 
-    const [deleteModalStatus, setDeleteModalStatus] = useState(false);
     const preview = [];
     const handleEdit = (id) =>{
         console.log("editing: ", id);
-    }
-
-    const handleDelete = (id) =>{
-        console.log(deleteModalStatus)
-        setDeleteModalStatus(true);
-        console.log("deleting: ", id)
     }
 
     for(let i in blogPreviews){
@@ -49,8 +43,11 @@ export default function Blogs({blogPreviews}){
                         </h1>
 
                         <div className="modifyicons">
-                            <EditIcon onClick={()=>handleEdit(blogPreviews[i].blog_id)} style={{cursor: "pointer", verticalAlign:"middle", marginRight: "4px", transform: "translatey(4px)", color: "#808080"}}/> 
-                            <DeleteIcon onClick={()=>handleDelete(blogPreviews[i].blog_id)} style={{ cursor:"pointer", verticalAlign:"middle", marginLeft: "4px", transform: "translatey(4px)", color: "#808080"}}/> 
+
+                            {/* <EditIcon onClick={()=>handleEdit(blogPreviews[i].blog_id)} style={{cursor: "pointer", verticalAlign:"middle", marginRight: "4px", transform: "translatey(4px)", color: "#808080"}}/>  */}
+                            <UpdateBlog title = {blogPreviews[i].title} description = {blogPreviews[i].description} body = {blogPreviews[i].body} />
+                            <DeleteBlog blog_id = {blogPreviews[i].blog_id}/>
+                            {/* <DeleteIcon onClick={()=>handleDelete(blogPreviews[i].blog_id)} style={{ cursor:"pointer", verticalAlign:"middle", marginLeft: "4px", transform: "translatey(4px)", color: "#808080"}}/>  */}
                         </div>
                     </div>
 
@@ -132,7 +129,7 @@ export default function Blogs({blogPreviews}){
                 </div>
         </Layout>
         <BlogEntryForm/>
-        <DeleteBlog deleteModalStatus={deleteModalStatus}/>
+        {/* <DeleteBlog deleteModalStatus={deleteModalStatus}/> */}
     </Fragment>
     );
 }

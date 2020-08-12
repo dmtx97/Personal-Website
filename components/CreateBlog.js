@@ -16,7 +16,7 @@ export default function CreateBlog(){
     const converter = new showdown.Converter();
     const api = new API();
 
-    const initialState ={
+    const initialState = {
         title: "",
         description: "",
         body: ""
@@ -45,22 +45,9 @@ export default function CreateBlog(){
         body: body
       }
 
-      // console.log(data);
-
       api.postBlogEntry(data);
       setState(initialState);
       handleClose();
-      window.location.reload(); 
-      // .then((data)=>{
-      //   console.log(data);
-      //   setState(initialState);
-      //   handleClose();
-      // })
-      // .catch((error)=>{
-      //   console.log(error);
-      // })
-      //   // converter.makeHtml(body);
-      //   console.log(title);
     }
 
     const style = {
@@ -124,7 +111,7 @@ export default function CreateBlog(){
         </DialogContent>
         <DialogActions style={{marginRight: "20px", marginLeft: "20px", marginBottom: "8px", paddingLeft: "0px", paddingRight: "0px"}}>
         <Button variant="contained" style={{fontWeight: 300, color: "grey", boxShadow: "none"}} onClick={handleClose}>Cancel</Button>
-        <Button variant="contained" style={{fontWeight: 300, color: "grey", boxShadow: "none"}} onClick={handleBlogSubmission}>Post</Button>
+        <Button variant="contained" style={{ background: "#23132D", fontWeight: 300, color: "white", boxShadow: "none"}} onClick={handleBlogSubmission}>Post</Button>
         </DialogActions>
       </Dialog>
 

@@ -8,6 +8,10 @@ const getOptions = {
   method: 'get',
 }
 
+const deleteOptions = {
+  method: 'delete',
+}
+
 export default class API{
 
   sendEmail(data){
@@ -15,19 +19,14 @@ export default class API{
     postOptions['data'] = data;
     axios(postOptions);
   }
-
-  postBlogEntry(data){
-    postOptions['url'] = '/api/post-blog-entry';
-    postOptions['data'] = data;
-    axios(postOptions);
-  }
-
+  
   verifyUser(data){
     postOptions['url'] = 'api/verifyuser';
     postOptions['data'] = data;
     axios(postOptions);
   }
 
+  //BLOG
   async getBlogs(){
 
     getOptions['url'] = 'http://localhost:3000/api/get-blogs';
@@ -51,6 +50,23 @@ export default class API{
     catch (error) {
       return error;
     }
+  }
+
+  postBlogEntry(data){
+    postOptions['url'] = '/api/post-blog-entry';
+    postOptions['data'] = data;
+    axios(postOptions)
+    .then(setTimeout(()=>{
+      window.location.reload()
+    }, 200))
+  }
+
+  deleteBlogEntry(blog_id){
+    deleteOptions['url'] = `/api/delete-blog-entry/${blog_id}`;
+    axios(deleteOptions)
+    .then(setTimeout(()=>{
+      window.location.reload()
+    }, 200))
   }
 }
 

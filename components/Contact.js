@@ -60,7 +60,7 @@ export default function Contact(){
         </h4>
         <form noValidate autoComplete="off">
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6} style={{paddingBottom:"0px", paddingRight:"4px"}}>
+            <Grid item xs={12} sm={6} style={{paddingBottom:"0px"}}>
                 <CssTextField
                   fullWidth
                   id="firstName"
@@ -75,7 +75,7 @@ export default function Contact(){
                 />
             </Grid>
 
-            <Grid item xs={12} sm={6} style={{paddingLeft: "4px"}}>
+            <Grid item xs={12} sm={6}>
                 <CssTextField
                 fullWidth
                 id="lastName"

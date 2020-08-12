@@ -49,9 +49,9 @@ router.post('/post-blog-entry', (req,res)=>{
     })
 });
 
-router.post('/delete-blog-entry', (req, res)=>{
-    let blog_id = req.body.blog_id;
-    db.one('DELETE FROM blogs WHERE blog_id = $1;'[blog_id])
+router.delete('/delete-blog-entry/:blog_id', (req, res)=>{
+    let blog_id = req.params.blog_id
+    db.none('DELETE FROM blogs WHERE blog_id = $1;', [blog_id])
     .then(res.sendStatus(200))
     .catch(error=>{
         console.log(error);
