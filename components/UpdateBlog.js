@@ -1,14 +1,16 @@
+import API from '../api';
 import { Fragment, useState, useEffect } from 'react';
 import EditIcon from '@material-ui/icons/Edit';
 import Button from '@material-ui/core/Button';
-import { CssTextField, PurpleButton } from '../style/MaterialStyleVariant';
-import TextField from '@material-ui/core/TextField';
+import { CssTextField } from '../style/MaterialStyleVariant';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default function UpdateBlog(props){
+
+    const api = new API();
 
     const initialState ={
         title: props.title,
@@ -17,13 +19,12 @@ export default function UpdateBlog(props){
     }
 
     const [{title, description, body}, setState] = useState(initialState);
+    const [open, setOpen] = useState(false);
 
     const onChange = e => {
         const { name, value } = e.target;
         setState(prevState => ({ ...prevState, [name]: value }));
     };
-
-    const [open, setOpen] = useState(false);
 
     const handleOpen = () =>{
         setOpen(true);
@@ -40,7 +41,9 @@ export default function UpdateBlog(props){
             body : body
         }
 
+        api.updateBlogEntry(props.blog_id, data);
         console.log(data)
+        handleClose()
     }
 
     return(

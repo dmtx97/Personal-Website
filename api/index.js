@@ -61,6 +61,15 @@ export default class API{
     }, 200))
   }
 
+  updateBlogEntry(blog_id, data){
+    postOptions['url'] = `/api/update-blog-entry/${blog_id}`;
+    postOptions['data'] = data;
+    axios(postOptions)
+    .then(setTimeout(()=>{
+      window.location.reload()
+    }, 200))
+  }
+
   deleteBlogEntry(blog_id){
     deleteOptions['url'] = `/api/delete-blog-entry/${blog_id}`;
     axios(deleteOptions)
@@ -68,5 +77,7 @@ export default class API{
       window.location.reload()
     }, 200))
   }
+
+  
 }
 

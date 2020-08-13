@@ -6,10 +6,10 @@ import { useEffect, useState, Fragment } from 'react';
 import BlogEntryForm from "../components/CreateBlog";
 import { getSlugifiedTitle } from "../utils";
 import ReactMarkdown from 'react-markdown';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
 import DeleteBlog from '../components/DeleteBlog';
 import UpdateBlog from '../components/UpdateBlog';
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import 'github-markdown-css';
 
 const CodeBlock = ({ language, value }) => {
@@ -20,10 +20,6 @@ const CodeBlock = ({ language, value }) => {
 export default function Blogs({blogPreviews}){
 
     const preview = [];
-    const handleEdit = (id) =>{
-        console.log("editing: ", id);
-    }
-
     for(let i in blogPreviews){
         
         const blog_title = blogPreviews[i].title.toLowerCase();
@@ -43,11 +39,8 @@ export default function Blogs({blogPreviews}){
                         </h1>
 
                         <div className="modifyicons">
-
-                            {/* <EditIcon onClick={()=>handleEdit(blogPreviews[i].blog_id)} style={{cursor: "pointer", verticalAlign:"middle", marginRight: "4px", transform: "translatey(4px)", color: "#808080"}}/>  */}
-                            <UpdateBlog title = {blogPreviews[i].title} description = {blogPreviews[i].description} body = {blogPreviews[i].body} />
+                            <UpdateBlog blog_id = {blogPreviews[i].blog_id} title = {blogPreviews[i].title} description = {blogPreviews[i].description} body = {blogPreviews[i].body} />
                             <DeleteBlog blog_id = {blogPreviews[i].blog_id}/>
-                            {/* <DeleteIcon onClick={()=>handleDelete(blogPreviews[i].blog_id)} style={{ cursor:"pointer", verticalAlign:"middle", marginLeft: "4px", transform: "translatey(4px)", color: "#808080"}}/>  */}
                         </div>
                     </div>
 
@@ -129,7 +122,6 @@ export default function Blogs({blogPreviews}){
                 </div>
         </Layout>
         <BlogEntryForm/>
-        {/* <DeleteBlog deleteModalStatus={deleteModalStatus}/> */}
     </Fragment>
     );
 }

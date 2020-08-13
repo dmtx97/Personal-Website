@@ -58,6 +58,19 @@ router.delete('/delete-blog-entry/:blog_id', (req, res)=>{
     })
 })
 
+router.post('/update-blog-entry/:blog_id', (req, res)=>{
+    let blog_id = req.params.blog_id;
+    let title = req.body.title;
+    let description = req.body.description;
+    let body = req.body.body;
+
+    db.none('UPDATE blogs SET title = $1, description = $2, body = $3 WHERE blog_id = $4;', [title, description, body, blog_id])
+    .then(res.sendStatus(200))
+    .catch(error=>{
+        console.log(error);
+    })
+})
+
 router.get('/get-blogs', (req, res)=>{
     db.any('SELECT * FROM blogs ORDER BY date_recorded ASC;')
     .then(rows=>{
@@ -82,7 +95,7 @@ router.get('/get-blog/:blog_id', (req, res)=>{
     })
 })
 
-router.post('/verifyuser', (req, res)=>{
+router.put('/verifyuser', (req, res)=>{
     // get hashed password from database
     // right now testing through a generated hashed password in a json file
     bcrypt.compare(req.body.password, test.hashedPw, function(err, result) {
