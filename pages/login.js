@@ -6,6 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import API from '../api';
+import Cookies from 'js-cookie';
 
 export default function Login(){    
 
@@ -33,7 +34,6 @@ export default function Login(){
         setState(initialState);
         console.log(data);
     }
-    
 
     return (
         <div>

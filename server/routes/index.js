@@ -6,7 +6,7 @@ const db = require('../db');
 const fs = require('fs');
 const bcrypt = require('bcrypt')
 const test = require('../../test.json')
-
+const jwt = require('jsonwebtoken');
 
 /* NODEMAILER */
 router.post('/contact-form', (req, res)=>{
@@ -38,7 +38,7 @@ router.post('/contact-form', (req, res)=>{
 });
 
 /* BLOG */ 
-router.post('/post-blog-entry', (req,res)=>{
+router.post('/post-blog-entry', (req,res,next)=>{
     let title = req.body.title;
     let description = req.body.description;
     let body = req.body.body;
@@ -49,7 +49,7 @@ router.post('/post-blog-entry', (req,res)=>{
     })
 });
 
-router.delete('/delete-blog-entry/:blog_id', (req, res)=>{
+router.delete('/delete-blog-entry/:blog_id', (req, res,next)=>{
     let blog_id = req.params.blog_id
     db.none('DELETE FROM blogs WHERE blog_id = $1;', [blog_id])
     .then(res.sendStatus(200))
@@ -58,7 +58,7 @@ router.delete('/delete-blog-entry/:blog_id', (req, res)=>{
     })
 })
 
-router.post('/update-blog-entry/:blog_id', (req, res)=>{
+router.post('/update-blog-entry/:blog_id', (req, res,next)=>{
     let blog_id = req.params.blog_id;
     let title = req.body.title;
     let description = req.body.description;
@@ -71,7 +71,7 @@ router.post('/update-blog-entry/:blog_id', (req, res)=>{
     })
 })
 
-router.get('/get-blogs', (req, res)=>{
+router.get('/get-blogs', (req, res,next)=>{
     db.any('SELECT * FROM blogs ORDER BY date_recorded ASC;')
     .then(rows=>{
         // let data = JSON.stringify(rows);
@@ -83,7 +83,7 @@ router.get('/get-blogs', (req, res)=>{
     })
 })
 
-router.get('/get-blog/:blog_id', (req, res)=>{
+router.get('/get-blog/:blog_id', (req, res,next)=>{
     let blog_id = req.params.blog_id;
 
     db.one('SELECT * FROM blogs WHERE blog_id = $1 ORDER BY date_recorded ASC;', [blog_id])
@@ -95,15 +95,19 @@ router.get('/get-blog/:blog_id', (req, res)=>{
     })
 })
 
-router.put('/verifyuser', (req, res)=>{
-    // get hashed password from database
-    // right now testing through a generated hashed password in a json file
+router.post('/verifyuser', (req, res)=>{
+
+    // const person = await db.one('SELECT * from admin WHERE Email = $1',[req.body.emai]);
+                                      //replace with person.passwordHash when using database
     bcrypt.compare(req.body.password, test.hashedPw, function(err, result) {
         if (result == true){
-            res.send("passwords match!")
+            const claims = { user: "Daniel Mendez", email: req.body.email}
+            const verified = jwt.sign(claims, config.jwtSecret, { expiresIn: '1h'});
+            res.json({authToken: verified})
         }
         else
-            res.send('incorrect password')
+            res.status(215).json({message: "incorrect password"});
+            // res.send('incorrect password')
     });
 })
 

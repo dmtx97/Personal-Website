@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Cookie from 'js-cookie';
+
 
 const postOptions = {
   method: 'post',
@@ -12,7 +14,10 @@ const deleteOptions = {
   method: 'delete',
 }
 
+const cookie = Cookie.get("authToken");
+
 export default class API{
+
 
   sendEmail(data){
     postOptions['url'] = '/api/contact-form';
@@ -23,7 +28,16 @@ export default class API{
   verifyUser(data){
     postOptions['url'] = 'api/verifyuser';
     postOptions['data'] = data;
-    axios(postOptions);
+    axios(postOptions).then( res =>{
+      if(res.status != 200){
+        console.log(res.data.message)
+      }
+
+      else{
+        Cookie.set("authToken", res.data.authToken);
+        console.log(res.data.authToken)      
+      }
+    });
   }
 
   //BLOG
@@ -55,6 +69,7 @@ export default class API{
   postBlogEntry(data){
     postOptions['url'] = '/api/post-blog-entry';
     postOptions['data'] = data;
+    postOptions['headers'] = {"Authorization" : `Bearer ${cookie}`}
     axios(postOptions)
     .then(setTimeout(()=>{
       window.location.reload()
@@ -64,6 +79,7 @@ export default class API{
   updateBlogEntry(blog_id, data){
     postOptions['url'] = `/api/update-blog-entry/${blog_id}`;
     postOptions['data'] = data;
+    postOptions['headers'] = {"Authorization" : `Bearer ${cookie}`}
     axios(postOptions)
     .then(setTimeout(()=>{
       window.location.reload()
@@ -72,12 +88,11 @@ export default class API{
 
   deleteBlogEntry(blog_id){
     deleteOptions['url'] = `/api/delete-blog-entry/${blog_id}`;
+    postOptions['headers'] = {"Authorization" : `Bearer ${cookie}`}
     axios(deleteOptions)
     .then(setTimeout(()=>{
       window.location.reload()
     }, 200))
   }
-
-  
 }
 
