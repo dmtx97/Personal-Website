@@ -68,7 +68,7 @@ export default function CreateBlog(){
         </Fab>
 
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth={true} >
-        <DialogTitle style={{paddingBottom:"0px"}}>New Blog</DialogTitle>
+        <DialogTitle style={{paddingBottom:"0px", paddingRight:"20px", paddingLeft: "20px"}}>New Blog</DialogTitle>
         <DialogContent style={{paddingLeft: "20px", paddingRight: "20px", paddingTop: "0", paddingBottom: "0px"}}>
           <CssTextField
             autoFocus

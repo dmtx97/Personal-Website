@@ -47,7 +47,12 @@ export default function Links(){
         }
 
         .link-component a{
+            
             color: #1F1128;
+        }
+
+        .link-component{
+            width: 100%;
         }
     
     `}</style>      

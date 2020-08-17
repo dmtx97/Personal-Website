@@ -17,7 +17,7 @@ const CodeBlock = ({ language, value }) => {
     };
 
 //make this admin page instead... copy for front end view
-export default function Blog({blogPreviews}){
+export default function BlogPortal({blogPreviews}){
 
     const preview = [];
     for(let i in blogPreviews){
@@ -37,6 +37,11 @@ export default function Blog({blogPreviews}){
                                     <a className="blog-title" >{blogPreviews[i].title}</a>
                             </Link>
                         </h1>
+
+                        <div className="modifyicons">
+                            <UpdateBlog blog_id = {blogPreviews[i].blog_id} title = {blogPreviews[i].title} description = {blogPreviews[i].description} body = {blogPreviews[i].body} />
+                            <DeleteBlog blog_id = {blogPreviews[i].blog_id}/>
+                        </div>
                     </div>
 
                     <p style={{marginTop:"0px", color: "gray"}}>{description}</p>
@@ -116,6 +121,7 @@ export default function Blog({blogPreviews}){
                     </div>
                 </div>
         </Layout>
+        <BlogEntryForm/>
     </Fragment>
     );
 }

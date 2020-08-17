@@ -54,7 +54,7 @@ export default function UpdateBlog(props){
 
 
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth={true} >
-                <DialogTitle style={{paddingBottom:"0px"}}>Edit Blog</DialogTitle>
+                <DialogTitle style={{paddingBottom:"0px", paddingRight:"20px", paddingLeft: "20px"}}>Edit Blog</DialogTitle>
                 <DialogContent style={{paddingLeft: "20px", paddingRight: "20px", paddingTop: "0", paddingBottom: "0px"}}>
                 <CssTextField
                     autoFocus
