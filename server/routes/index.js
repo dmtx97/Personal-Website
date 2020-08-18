@@ -7,6 +7,7 @@ const fs = require('fs');
 const bcrypt = require('bcrypt')
 const test = require('../../test.json')
 const jwt = require('jsonwebtoken');
+const Cookie = require('js-cookie');
 
 /* NODEMAILER */
 router.post('/contact-form', (req, res)=>{
@@ -38,7 +39,7 @@ router.post('/contact-form', (req, res)=>{
 });
 
 /* BLOG */ 
-router.post('/post-blog-entry', (req,res,next)=>{
+router.post('/post-blog-entry', authenticateToken, (req,res)=>{
     let title = req.body.title;
     let description = req.body.description;
     let body = req.body.body;
@@ -49,7 +50,7 @@ router.post('/post-blog-entry', (req,res,next)=>{
     })
 });
 
-router.delete('/delete-blog-entry/:blog_id', (req, res,next)=>{
+router.delete('/delete-blog-entry/:blog_id', authenticateToken, (req, res)=>{
     let blog_id = req.params.blog_id
     db.none('DELETE FROM blogs WHERE blog_id = $1;', [blog_id])
     .then(res.sendStatus(200))
@@ -58,7 +59,7 @@ router.delete('/delete-blog-entry/:blog_id', (req, res,next)=>{
     })
 })
 
-router.post('/update-blog-entry/:blog_id', (req, res,next)=>{
+router.post('/update-blog-entry/:blog_id', authenticateToken, (req, res)=>{
     let blog_id = req.params.blog_id;
     let title = req.body.title;
     let description = req.body.description;
@@ -71,7 +72,7 @@ router.post('/update-blog-entry/:blog_id', (req, res,next)=>{
     })
 })
 
-router.get('/get-blogs', (req, res,next)=>{
+router.get('/get-blogs', (req, res)=>{
     db.any('SELECT * FROM blogs ORDER BY date_recorded ASC;')
     .then(rows=>{
         // let data = JSON.stringify(rows);
@@ -83,7 +84,7 @@ router.get('/get-blogs', (req, res,next)=>{
     })
 })
 
-router.get('/get-blog/:blog_id', (req, res,next)=>{
+router.get('/get-blog/:blog_id', (req, res)=>{
     let blog_id = req.params.blog_id;
 
     db.one('SELECT * FROM blogs WHERE blog_id = $1 ORDER BY date_recorded ASC;', [blog_id])
@@ -110,5 +111,18 @@ router.post('/verifyuser', (req, res)=>{
             // res.send('incorrect password')
     });
 })
+
+function authenticateToken(req, res, next){
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+
+    if(token == null) return res.sendStatus(401)
+    
+    jwt.verify(token, config.jwtSecret, (err, user)=>{
+        if (err) return res.sendStatus(403)
+        req.user = user
+        next()
+    })
+}
 
 module.exports = router;

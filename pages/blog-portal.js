@@ -21,13 +21,13 @@ const CodeBlock = ({ language, value }) => {
 //make this admin page instead... copy for front end view
 export default function BlogPortal({blogPreviews}){
     const router = useRouter()
-    // const cookie = Cookies.get('authToken');
-    // useEffect(()=>{
-    //     //cannot check if authenticated in getServerSideProps yet
-    //     if(!cookie){
-    //         router.push('/login');
-    //     }
-    // },[])
+    const cookie = Cookies.get('authToken');
+    useEffect(()=>{
+        //cannot check if authenticated in getServerSideProps yet
+        if(!cookie){
+            router.push('/login');
+        }
+    },[])
 
     const preview = [];
     for(let i in blogPreviews){

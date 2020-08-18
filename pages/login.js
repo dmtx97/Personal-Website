@@ -5,13 +5,13 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { useRouter } from 'next/router'
 import API from '../api';
 import Cookies from 'js-cookie';
 
-export default function Login(){    
+export default function Login(){
 
     const api = new API();
-
     const initialState ={
         email: "",
         password: "",

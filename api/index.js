@@ -1,7 +1,6 @@
 import axios from 'axios';
 import Cookie from 'js-cookie';
 
-
 const postOptions = {
   method: 'post',
 }
@@ -35,7 +34,8 @@ export default class API{
 
       else{
         Cookie.set("authToken", res.data.authToken);
-        console.log(res.data.authToken)      
+        console.log(res.data.authToken)
+        window.location = "/blog-portal"
       }
     });
   }
@@ -88,7 +88,7 @@ export default class API{
 
   deleteBlogEntry(blog_id){
     deleteOptions['url'] = `/api/delete-blog-entry/${blog_id}`;
-    postOptions['headers'] = {"Authorization" : `Bearer ${cookie}`}
+    deleteOptions['headers'] = {"Authorization" : `Bearer ${cookie}`}
     axios(deleteOptions)
     .then(setTimeout(()=>{
       window.location.reload()
