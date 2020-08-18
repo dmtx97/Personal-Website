@@ -29,6 +29,7 @@ export default class API{
     postOptions['data'] = data;
     axios(postOptions).then( res =>{
       if(res.status != 200){
+        alert("Incorrect Password/Login");
         console.log(res.data.message)
       }
 

@@ -23,21 +23,21 @@
     "jsonwebtoken": "^8.5.1",
     "markdown-to-jsx": "^6.11.4",
     "marked": "^1.1.1",
-    "next": "^9.4.4",
+    "next": "^9.5.2",
     "next-compose-plugins": "^2.2.0",
-    "next-images": "^1.4.0",
+    "next-images": "^1.4.1",
     "node-sass": "^4.14.1",
-    "nodemailer": "^6.4.10",
+    "nodemailer": "^6.4.11",
     "pg-promise": "^10.5.8",
     "raw-loader": "^4.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-markdown": "^4.3.1",
-    "react-syntax-highlighter": "^13.0.0",
+    "react-syntax-highlighter": "^13.5.0",
     "showdown": "^1.9.1"
   },
   "devDependencies": {
     "file-loader": "^6.0.0",
-    "webpack": "^4.43.0"
+    "webpack": "^4.44.1"
   }
 }

@@ -98,18 +98,28 @@ router.get('/get-blog/:blog_id', (req, res)=>{
 
 router.post('/verifyuser', (req, res)=>{
 
-    // const person = await db.one('SELECT * from admin WHERE Email = $1',[req.body.emai]);
-                                      //replace with person.passwordHash when using database
-    bcrypt.compare(req.body.password, test.hashedPw, function(err, result) {
-        if (result == true){
-            const claims = { user: "Daniel Mendez", email: req.body.email}
-            const verified = jwt.sign(claims, config.jwtSecret, { expiresIn: '1h'});
-            res.json({authToken: verified})
-        }
-        else
-            res.status(215).json({message: "incorrect password"});
-            // res.send('incorrect password')
-    });
+    let email = req.body.email;
+    let password = req.body.password;
+
+    db.one('SELECT * from daniel WHERE email= $1;', [email])
+    .then(row=>{
+        
+        bcrypt.compare(password, row.passwordhash).then(isMatch=>{
+
+            if(isMatch){
+                const claims = { user: "Daniel Mendez", email: email}
+                const verified = jwt.sign(claims, config.jwtSecret, { expiresIn: '1h'});
+                res.json({authToken: verified})
+            }
+
+            else
+                res.status(215).json({message: "Incorrect Password/Email"});
+            });
+        })
+        .catch(error=>{
+            console.log(error);
+            res.status(215).json({message: "Incorrect Password/Email"});
+    })
 })
 
 function authenticateToken(req, res, next){
