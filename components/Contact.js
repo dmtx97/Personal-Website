@@ -38,7 +38,9 @@ export default function Contact(){
       return false;
     }
 
-    const inputValidation = ()=>{
+    const inputValidation = (e)=>{
+
+      e.preventDefault();
 
       let data = {
         firstName: firstName.trim(),
@@ -58,7 +60,7 @@ export default function Contact(){
         <h4 style={{fontWeight: "500", fontSize:"1rem", marginTop: "0px", marginBottom:"10px" }} >
           Contact Me
         </h4>
-        <form noValidate autoComplete="off">
+        <form onSubmit={inputValidation} noValidate autoComplete="off">
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6} style={{paddingBottom:"0px"}}>
                 <CssTextField
@@ -129,7 +131,7 @@ export default function Contact(){
               }}
             />
             <Grid item xs={12}>
-                <Button disabled={isFormValid()} fullWidth variant="contained" style={{marginTop: "8px", fontWeight: 300, color: "grey", boxShadow: "none"}} onClick={inputValidation}>Send</Button>
+                <Button type="submit" disabled={isFormValid()} fullWidth variant="contained" style={{marginTop: "8px", fontWeight: 300, color: "grey", boxShadow: "none"}} >Send</Button>
             </Grid>
             </Grid>
 

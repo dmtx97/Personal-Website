@@ -5,7 +5,6 @@ const config = require('../../config.json')
 const db = require('../db');
 const fs = require('fs');
 const bcrypt = require('bcrypt')
-const test = require('../../test.json')
 const jwt = require('jsonwebtoken');
 const Cookie = require('js-cookie');
 

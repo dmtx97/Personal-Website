@@ -5,6 +5,7 @@ import { route } from 'next/dist/next-server/server/router';
 import "../../style/layout/_navbar.scss";
 import Button from '@material-ui/core/Button';
 import Cookies from 'js-cookie';
+import transitions from '@material-ui/core/styles/transitions';
 
 export default function Navbar(){
     const router = useRouter();
@@ -48,17 +49,17 @@ export default function Navbar(){
         <div>
             <header className={header}>
                 <div className={logo}><Link href="/"><a className="initials">DM</a></Link></div>
-                <ul className="links">
-                    <li id="blog"><Button><Link href = "/blog"><a style={{textDecoration:"none"}}>Blog</a></Link></Button></li>
+                    <ul className="links" id="nav">
+                        <li><Button style={{paddingTop: "0px", paddingBottom: "0px"}}><Link href = "/blog"><a style={{textDecoration:"none", color: "white", paddingTop: "18px", paddingBottom: "18px"}}>Blog</a></Link></Button></li>
 
-                    {
-                        portalButton ? <li id="blog"><Button><Link href = "/blog-portal"><a style={{textDecoration:"none"}}>Portal</a></Link></Button></li> : undefined
-                    }
+                        {
+                            portalButton ? <li><Button style={{paddingTop: "0px", paddingBottom: "0px"}}><Link href = "/blog-portal"><a style={{textDecoration:"none", color: "white", paddingTop: "18px", paddingBottom: "18px"}}>Portal</a></Link></Button></li> : undefined
+                        }
 
-                    {
-                        logoutButton ? <li id="blog"><Button onClick={handleLogout} style={{color: "white"}}>Logout</Button></li> : undefined
-                    }
-                </ul>        
+                        {
+                            logoutButton ? <li><Button style={{paddingTop: "0px", paddingBottom: "0px"}} onClick={handleLogout}><a style={{textDecoration: "none", color: "white", paddingTop:"18px", paddingBottom: "18px"}}>Logout</a></Button></li> : undefined
+                        }
+                    </ul>     
             </header>
         </div>
     );

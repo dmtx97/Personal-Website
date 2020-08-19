@@ -1,6 +1,6 @@
 const config = require('../../config.json');
 const pgp = require('pg-promise')();
-const connectionString = config.blogDBConnectionString2;
+const connectionString = config.blogDBConnectionString;
 const db = pgp(connectionString);
 
 db.func('version')

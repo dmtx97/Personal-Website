@@ -82,16 +82,20 @@
   margin: 0 24px;
   display: inline-flex;
   list-style: none;
-
-  #blog{
-    margin-bottom: 0px;
-  }
-
-  #blog a{
-    color: #E9EAED;
-  }
-
 }
+
+// #nav li:hover a:before{
+//   position: absolute;
+//   top: 0px;
+//   right: 0px;
+//   left: 0px;
+//   content: '.';
+//   color: transparent;
+//   background: white;
+//   height: 5px;
+// }
+
+
 
 
 @media screen and (max-width: 1700px) {
