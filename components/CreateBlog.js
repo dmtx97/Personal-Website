@@ -57,7 +57,7 @@ export default function CreateBlog(){
         bottom: 50,
         left: 'auto',
         position: 'fixed',
-        background: '#23132D',
+        background: '#1A2533',
         color: 'white'
       };
     
