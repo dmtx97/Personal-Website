@@ -42,7 +42,7 @@ export default function Archive(){
                                     }
                                     .archiveTitle {
                                         // text-decoration: underline;
-                                        color: #23132D;
+                                        color: #1A2533;
                                         font-weight: 300;
                                         display: block;
                                         white-space: nowrap;

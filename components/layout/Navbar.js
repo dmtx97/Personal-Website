@@ -18,9 +18,9 @@ export default function Navbar(){
 
 
     const listenScrollEvent = e => {
-        if(window.scrollY < window.innerHeight / 6.5 && router.pathname ==="/"){
+        if(window.scrollY < window.innerHeight / 5.5 && router.pathname ==="/"){
             return [setHeader("header"), setLinkItem("link-item"), setLogo("logo")];
-        } else if (window.scrollY > window.innerHeight / 6.5 && router.pathname ==="/"){
+        } else if (window.scrollY > window.innerHeight / 5.5 && router.pathname ==="/"){
             return [setHeader("header2"), setLinkItem("link-item2"), setLogo("logo2")];
         } else{
             return [setHeader("header2"), setLinkItem("link-item2"), setLogo("logo2")]

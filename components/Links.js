@@ -48,7 +48,7 @@ export default function Links(){
 
         .link-component a{
             
-            color: #1F1128;
+            color: #1A2533;
         }
 
         .link-component{
