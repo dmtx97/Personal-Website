@@ -83,7 +83,7 @@ export default function CreateBlog(){
           />
 
           <CssTextField
-            autoFocus
+            
             margin="dense"
             id="description"
             name="description"
@@ -96,7 +96,7 @@ export default function CreateBlog(){
             style={{marginTop: "10px", marginBottom: "0px"}}
           />
         <CssTextField
-            autoFocus
+            
             margin="dense"
             id="body"
             name="body"

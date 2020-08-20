@@ -59,7 +59,6 @@ export default function Login(){
                         />
 
                         <CssTextField
-                            autoFocus
                             margin="dense"
                             id="password"
                             name="password"
