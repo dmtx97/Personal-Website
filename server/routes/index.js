@@ -7,34 +7,19 @@ const fs = require('fs');
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
 const Cookie = require('js-cookie');
+const sgMail = require('@sendgrid/mail');
 
 /* NODEMAILER */
 router.post('/contact-form', (req, res)=>{
-    const email = req.body.email;
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: config.nodemailerUser,
-            pass: config.nodemailerPassword 
-        }
-    })
-
-    let mailOptions = {
-        // from: req.body.email,
-        to: 'dmtx97@gmail.com',
-        subject: `[NOTICE] Contact Via Website | ${req.body.firstName} ${req.body.lastName}`,
-        text: `${req.body.message}\n\nContact: ${req.body.email}`
-    }
-
-    console.log(req.body);
     
-    transporter.sendMail(mailOptions, function(err, data){
-        if (err){
-            console.log('Error Occurred: ', err);
-        } else{
-            console.log('Email Sent');
-        }
-    }); 
+    sgMail.setApiKey(config.sendGridApi);
+    const msg = {
+        to: 'dmtx97@gmail.com',
+        from: 'daniel.mendez.site@gmail.com',
+        subject: `[NOTICE] Contact Via Website | ${req.body.firstName} ${req.body.lastName}`,
+        text: `${req.body.message}\n\nContact: ${req.body.email}` 
+    };
+    sgMail.send(msg);
 });
 
 /* BLOG */ 

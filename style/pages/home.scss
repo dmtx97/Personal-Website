@@ -80,6 +80,10 @@ a {
       flex-direction: column;
       // box-sizing: border-box;
     }
+
+    .column{
+      position: static;
+    }
   
     .content {
       height: auto;

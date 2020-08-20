@@ -37,7 +37,7 @@ export default function DeleteBlog(props){
           </DialogContent>
           <DialogActions style={{marginRight: "20px", marginLeft: "20px", marginBottom: "8px", paddingLeft: "0px", paddingRight: "0px"}}>
             <Button variant="contained" style={{fontWeight: 300, color: "grey", boxShadow: "none"}} onClick={handleClose}>Cancel</Button>
-            <Button variant="contained" style={{ background: "#23132D", fontWeight: 300, color: "white", boxShadow: "none"}} onClick={handleDelete}>Delete</Button>
+            <Button variant="contained" style={{ background: "#1A2533", fontWeight: 300, color: "white", boxShadow: "none"}} onClick={handleDelete}>Delete</Button>
           </DialogActions>
         </Dialog>
       </Fragment>
