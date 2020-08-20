@@ -10,7 +10,7 @@ export const CssTextField = withStyles({
         color: 'grey',
       },
       '& .MuiFilledInput-underline:after': {
-        borderColor: '#2F0945',
+        borderColor: '#1A2533',
       },
       '& .MuiOutlinedInput-root': {
         '& fieldset': {
