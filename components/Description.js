@@ -61,17 +61,17 @@ export default function Description(){
                     <div className="row">
                     <div className="techcolumn" id="languages">
                     <h4 className="subsubsection" >Languages</h4>
-                    <p>C#, Java, Python, R, JavaScript, PowerShell, SQL, HTML+CSS, Sass, LaTeX</p>
+                    <p>C#, Java, JavaScript, Python, PowerShell, SQL, HTML+CSS, Sass, LaTeX</p>
                     </div>
                     <div className="techcolumn" id="frameworks">
                         <h4 className="subsubsection" >Libraries/Frameworks</h4>
-                        <p>ASP.NET MVC 5, ASP.NET Core, Flask, Node.js, Express.js, React.js, Unity</p>
+                        <p>.NET Core, ASP.NET MVC, Flask, React.js w/ Next.js, Node.js w/ Express.js, Unity</p>
                     </div>
                     </div>
 
                     <h4 className="subsubsection">Tools</h4>
-                    <p>Microsoft Azure, Microsoft SharePoint, Runbook Designer, Power Automate, Aruba Airwave, JunosSpace, Palo Alto
-                    Firewall Solutions, Zabbix, MySQL w/ Workbench, git</p>
+                    <p>Microsoft Azure, Microsoft SharePoint, Runbook Designer, Power Automate, Aruba Airwave, Junos Space, Palo Alto Firewall
+                    Solutions, Zabbix, PostgreSQL, MySQL w/ Workbench, Docker, Docker-Compose, git</p>
                 
                     <hr/>
                     <div>
