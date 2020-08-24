@@ -40,7 +40,7 @@ export default function Description(){
                     <h4 className="subsubsection">Networks/Systems Administrator</h4> 
                     <h4 className="date">March 2017 - Present</h4>
                     <ul className="listdesc">
-                        <li><span>Maintain Zabbix infrastructure to monitor devices, generate email alerts and daily reports to locate and resolve issues rapidly.</span></li>
+                        <li><span>Maintain Zabbix infrastructure to monitor devices, generate email alerts and daily reports to locate and resolve issues promptly.</span></li>
                         <li><span>Significantly improved web security by ensuring password-less Visual Basic Web App migration to Azure using key vaults.</span></li>
                         <li><span>Manage network infrastructure establishing fast, stable and secure networks for over 4,000 clients across three campuses.</span></li>
                         <li><span>Migrated Palo Alto Virtual IP policies for thousands of clients significantly improving network security and performance.</span></li>
