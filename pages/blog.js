@@ -108,7 +108,7 @@ export default function Blog({blogPreviews}){
                         </aside>
                         <section className="main">
                             <div style={{margin: "16px 20px 16px 20px"}}> 
-                                <h1 style={{color: "black", fontSize:"35px", marginTop:"16px"}}>POSTS</h1>
+                                <h1 style={{color: "black", fontSize:"35px", marginTop:"16px"}}>Blog Posts</h1>
                                 {preview}
                                 
                             </div>

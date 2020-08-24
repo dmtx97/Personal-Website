@@ -16,11 +16,15 @@ export default function Description(){
 
             <div className="resume">
                 <div>
+                    <h2 className="section">Summary</h2>
+                    <p style={{lineHeight:"2"}}>
+                    Dedicated, passionate, and knowledgable Computer Science graduate with over three years of proven experience in Networks/Systems administration. Highly skilled in critikal thinking and problem solving with demonstrated knowledge related to software development. Seeking positions related to Software Development to challenge myself in a field that is rapidly changing.                    </p>
+
                     <h2 className="section">Education</h2>
                     {/* Education */}
                     <div>
                         <h4 className="school">Dallas Baptist University</h4> 
-                        <h4 className="fl">GPA: 3.63</h4>
+                        <h4 className="fl">GPA: 3.625</h4>
                     </div>
 
                     <div>
@@ -36,11 +40,11 @@ export default function Description(){
                     <h4 className="subsubsection">Networks/Systems Administrator</h4> 
                     <h4 className="date">March 2017 - Present</h4>
                     <ul className="listdesc">
+                        <li><span>Maintain Zabbix infrastructure to monitor devices, generate email alerts and daily reports to locate and resolve issues rapidly.</span></li>
+                        <li><span>Significantly improved web security by ensuring password-less Visual Basic Web App migration to Azure using key vaults.</span></li>
                         <li><span>Manage network infrastructure establishing fast, stable and secure networks for over 4,000 clients across three campuses.</span></li>
-                        <li><span>Significantly improved website security by ensuring password-less WebApp migration to Microsoft Azure using key vaults.</span></li>
-                        <li><span>Maintain Zabbix infrastructure utilizing its API to monitor servers, create email alerts, and generate daily reports.</span></li>
-                        <li><span>Reduce manual labor by automating Sharepoint Workflows for travel approval requests.</span></li>
-                        <li><span>Responsible for Palo Alto firewall virtual IP auditing and configuration.</span></li>
+                        <li><span>Migrated Palo Alto Virtual IP policies for thousands of clients significantly improving network security and performance.</span></li>
+                        <li><span>Develop Workflows using Power Automate to provide advanced automated tasks for staff across multiple departments.</span></li>
                     </ul>
                     <br/>
                     <h4 className="title">Four Story Creative</h4>

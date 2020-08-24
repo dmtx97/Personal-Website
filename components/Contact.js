@@ -3,6 +3,7 @@ import Box from '@material-ui/core/Box';
 import {useState} from 'react'
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import { isValidEmail } from '../utils';
 import { CssTextField } from '../style/MaterialStyleVariant';
 import API from '../api/';
 
@@ -49,8 +50,10 @@ export default function Contact(){
         message: message
       }
 
-      api.sendEmail(data);
-      setState(initialState);
+      if(isValidEmail(data.email)){
+        api.sendEmail(data);
+        setState(initialState);
+      }
 
       console.log(data);
     }

@@ -7,7 +7,7 @@ export default function Hero(){
         <div className="hero-container">
                 <div className="hero-content">
                     <h1 className="name">Daniel Mendez</h1>
-                    <h2 className="description"> Software | Networking | Virtual Reality </h2>                    
+                    <h2 className="description"> Software | Web Design | Networking  </h2>                    
         </div>
 
             <style jsx>{`
@@ -33,6 +33,14 @@ export default function Hero(){
                         height: 100vh;
                     }
                 }
+
+                @media only screen and (max-width: 1366px) {
+                    .hero-container {
+                      background-attachment: scroll;
+                    }
+                  }
+
+
             `}</style>
         </div>
     );

@@ -36,19 +36,32 @@ export default function Archive(){
                                         display: none;
                                     }
 
-                                    .archive{
-                                        margin-bottom: 10px;
-                                        width: 350px;
+                                    hr{
+                                        margin-top: 1px;
+                                        margin-bottom: 0;
                                     }
+
+                                    // .archive{
+                                    //     width: 350px;
+                                    // }
                                     .archiveTitle {
-                                        // text-decoration: underline;
+                                        padding-top: 5px;
+                                        padding-bottom: 5px;
+                                        text-decoration: none;
                                         color: #1A2533;
                                         font-weight: 300;
                                         display: block;
                                         white-space: nowrap;
                                         text-overflow: ellipsis;
                                         overflow: hidden;
+                                        transition: 0.2s;
                                     }
+
+                                    .archiveTitle:hover{
+                                        background-color: #DEDEDE;
+                                    }
+
+                                    
 
                                     @media screen and (max-width: 1700px) {
                                         .archive{
