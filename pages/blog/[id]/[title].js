@@ -12,7 +12,7 @@ const CodeBlock = ({ language, value }) => {
     return <SyntaxHighlighter language={language} showLineNumbers={true} style={ tomorrow }>{value}</SyntaxHighlighter>;
     };
 
-export default function Blog({blog}){    
+export default function Blog({blog, blogs}){    
     
     return(
         <Layout>
@@ -21,7 +21,7 @@ export default function Blog({blog}){
                         <aside className="sidebarright">
                             <div className="column">
                                 <div className="links">
-                                    <Archive/>
+                                    <Archive blogs = {blogs}/>
                                 </div>
                                 <div className="contact">
                                     <Contact/>
@@ -65,10 +65,13 @@ export async function getServerSideProps(context){
     const api = new API();
     const blog_id = context.query.id
     const res = await api.getBlog(blog_id)
+    const blogs = await fetch('http://localhost:3000/api/get-blogs');
+    const blog_response = await blogs.json()
 
     return{
         props: {
-            blog: res
+            blog: res,
+            blogs: blog_response
         },
     }
 }
