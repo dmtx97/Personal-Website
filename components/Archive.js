@@ -47,6 +47,8 @@ export default function Archive(){
                                     .archiveTitle {
                                         padding-top: 5px;
                                         padding-bottom: 5px;
+                                        padding-right: 5px;
+                                        padding-left: 5px;
                                         text-decoration: none;
                                         color: #1A2533;
                                         font-weight: 300;
@@ -59,6 +61,7 @@ export default function Archive(){
 
                                     .archiveTitle:hover{
                                         background-color: #DEDEDE;
+                                        border-radius: 4px;
                                     }
 
                                     

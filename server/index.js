@@ -6,12 +6,14 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 const db = require("./db");
+const cors = require('cors');
 
 app
     .prepare()
     .then(()=>{
         const server = express();
         const showRoutes = require("./routes/index.js");
+        server.use(cors());
         server.use(bodyParser.json());
         server.use(bodyParser.urlencoded({extended: true}));
         server.use("/api", showRoutes);
