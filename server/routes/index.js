@@ -57,7 +57,7 @@ router.post('/update-blog-entry/:blog_id', authenticateToken, (req, res)=>{
 })
 
 router.get('/get-blogs', (req, res)=>{
-    db.any('SELECT * FROM blogs ORDER BY date_recorded ASC;')
+    db.any('SELECT * FROM blogs ORDER BY date_recorded DESC;')
     .then(rows=>{
         // let data = JSON.stringify(rows);
         // fs.writeFileSync('student-2.json', data);
