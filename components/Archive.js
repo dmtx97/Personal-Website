@@ -22,7 +22,7 @@ export default function Archive(props){
                         <div className="archive">
 
 
-                            <a href={`http://localhost:3000${domain}`} className="archiveTitle">{rows[i].title}</a>
+                            <a href={`${domain}`} className="archiveTitle">{rows[i].title}</a>
 
                         </div>
                         <hr/>

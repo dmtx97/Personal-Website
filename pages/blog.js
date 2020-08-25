@@ -18,9 +18,6 @@ const CodeBlock = ({ language, value }) => {
 
 //make this admin page instead... copy for front end view
 export default function Blog({blogPreviews}){
-
-    console.log(blogPreviews);
-
     const preview = [];
     for(let i in blogPreviews){
         

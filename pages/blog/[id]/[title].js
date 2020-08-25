@@ -10,7 +10,7 @@ import 'github-markdown-css';
 
 const CodeBlock = ({ language, value }) => {
     return <SyntaxHighlighter language={language} showLineNumbers={true} style={ tomorrow }>{value}</SyntaxHighlighter>;
-    };
+};
 
 export default function Blog({blog, blogs}){    
     
