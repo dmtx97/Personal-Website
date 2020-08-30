@@ -27,7 +27,7 @@ export default function Hero(){
                     background-size: cover;
                 }
 
-                @media screen and (max-width: 1700px){
+                @media screen and (max-width: 1366px){
 
                     .hero-container{
                         height: 100vh;
@@ -37,6 +37,7 @@ export default function Hero(){
                 @media only screen and (max-width: 1366px) {
                     .hero-container {
                       background-attachment: scroll;
+                      height: 100vh;
                     }
                   }
 

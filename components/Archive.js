@@ -33,8 +33,9 @@ export default function Archive(props){
                                 }
 
                                 hr{
-                                    margin-top: 1px;
-                                    margin-bottom: 0;
+                                    margin-top: 2px;
+                                    margin-bottom: 1px;
+                                    // border: 1px;
                                 }
 
                                 // .archive{
@@ -57,7 +58,7 @@ export default function Archive(props){
 
                                 .archiveTitle:hover{
                                     background-color: #DEDEDE;
-                                    border-radius: 4px;
+                                    // border-radius: 4px;
                                 }
 
                                 
