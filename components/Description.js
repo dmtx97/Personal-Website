@@ -18,7 +18,9 @@ export default function Description(){
                 <div>
                     <h2 className="section">Summary</h2>
                     <p style={{lineHeight:"2"}}>
-                    Dedicated, passionate, and knowledgable Computer Science graduate with over three years of proven experience in Networks/Systems administration. Highly skilled in critikal thinking and problem solving with demonstrated knowledge related to software development. Seeking positions related to Software Development to challenge myself in a field that is rapidly changing.                    </p>
+                    
+                    Dedicated, passionate, and knowledgeable Computer Science graduate with over three years of proven experience in Networks/Systems administration. Highly skilled in critical thinking and problem solving with demonstrated knowledge related to software development. Seeking positions related to Software Development to challenge myself in a field that is rapidly changing.
+                    </p>
 
                     <h2 className="section">Education</h2>
                     {/* Education */}
