@@ -101,12 +101,25 @@ $base-margin: 16px 0 16px 0;
         
     }
     
-    #languages{
+    #frontend{
         padding-right: 20px;
+        padding-bottom: 30px;
     }
 
-    #framework{
-        padding-right: 0px;
+    #backend{
+        // padding-right: 20px;
+        padding-left: 20px;
+        padding-bottom: 30px;
+    }
+
+    #tools{
+        padding-right: 20px;
+        // padding-left: 20px;
+    }
+
+    #databases{
+        padding-left: 20px;
+
     }
     
       /* Clear floats after the columns */
@@ -116,7 +129,7 @@ $base-margin: 16px 0 16px 0;
         clear: both;
     }
         
-    @media screen and (max-width: 500px){
+    @media screen and (max-width: 600px){
 
         .subsubsection{
             margin-bottom: 4px;
@@ -131,6 +144,12 @@ $base-margin: 16px 0 16px 0;
             float: none;
             width: 100%;
         }
+
+        #frontend, #backend, #tools, #databases{
+            padding: 0px;
+        }
+
+
     }
         
 }

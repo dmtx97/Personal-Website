@@ -21,14 +21,44 @@ export default function Description(){
 
                     <h2 className="section">Technical Skills</h2>
                     <div className="row">
-                    <div className="techcolumn" id="languages">
-                    <h4 className="subsubsection" >Languages</h4>
-                    <p>C#, Java, JavaScript, Python, PowerShell, SQL, HTML+CSS, Sass, LaTeX</p>
-                    </div>
-                    <div className="techcolumn" id="frameworks">
-                        <h4 className="subsubsection" >Libraries/Frameworks</h4>
-                        <p>.NET Core, ASP.NET MVC, Flask, React.js w/ Next.js, Node.js w/ Express.js, Unity</p>
-                    </div>
+
+
+                        <div className="techcolumn" id="frontend">
+                            <h4 className="subsubsection" >Front End Development</h4>
+                            <ul className="listdesc">
+                                <li>React</li>
+                                <li>Next.js</li>
+                                <li>Material UI</li>
+                            </ul>
+                        </div>
+
+                        <div className="techcolumn" id="backend">
+                            <h4 className="subsubsection" >Back End Development</h4>
+                            <ul className="listdesc">
+                                <li>ASP.NET Core Web API</li>
+                                <li>ASP.NET Core MVC</li>
+                                <li>Node.js (Express)</li>
+                            </ul>
+                        </div>
+
+                        <div className="techcolumn" id="tools">
+                            <h4 className="subsubsection" >Tools</h4>
+                            <ul className="listdesc">
+                                <li>Microsoft Azure (Storage, Function, Web App)</li>
+                                <li>Docker (Docker Compose)</li>
+                                <li>Entity Framework Core</li>
+                            </ul>
+                        </div>
+
+                        <div className="techcolumn" id="databases">
+                            <h4 className="subsubsection" >Databases</h4>
+                            <ul className="listdesc">
+                                <li>MySQL</li>
+                                <li>PostgreSQL</li>
+                            </ul>
+                        </div>
+
+
                     </div>
 
                     <hr/>
